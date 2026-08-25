@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Check the profile's assets against WCAG 2.2.
 
-Walks the shipped SVGs and the README rather than the palette, so it catches a
-colour that drifted out of the lookup table as well as one that was never in it.
+Walks the shipped SVGs rather than the palette, so it catches a colour that
+drifted out of the lookup table as well as one that was never in it. An
+external profile README can be supplied explicitly; without one, README
+checks are skipped so the maintenance README is never audited accidentally.
 
-    python3 audit.py        # from the assets/ directory
+    python3 audit.py --readme /path/to/Builder106/README.md
 """
 
+import argparse
+import os
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -16,7 +20,7 @@ from a11y import AAA_LARGE_TEXT, AAA_TEXT, NON_TEXT, contrast
 
 SVG = "{http://www.w3.org/2000/svg}"
 ASSETS = Path(__file__).parent
-README = ASSETS.parent / "README.md"
+README: Path | None = None
 
 # Backgrounds a given file's text can sit on. The table has no canvas of its
 # own — it is drawn straight onto the GitHub page — so its page colours are
@@ -129,9 +133,9 @@ def audit_svg(path: Path) -> list[str]:
     return problems
 
 
-def audit_readme() -> list[str]:
+def audit_readme(readme: Path) -> list[str]:
     problems = []
-    text = README.read_text()
+    text = readme.read_text(encoding="utf-8")
     for colour in re.findall(r"img\.shields\.io/badge/[^)\s]*?-([0-9a-fA-F]{6})(?:\?|\))", text):
         ratio = contrast("#" + colour, "#ffffff")
         if ratio < AAA_TEXT:
@@ -142,7 +146,24 @@ def audit_readme() -> list[str]:
     return problems
 
 
-def main() -> int:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Audit profile assets and an optional external profile README.")
+    parser.add_argument(
+        "--readme",
+        type=Path,
+        help="Path to the external Builder106 profile README to audit (also accepted via PROFILE_README_PATH).",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    global README
+    args = parse_args(argv)
+    README = args.readme or (Path(os.environ["PROFILE_README_PATH"]) if os.environ.get("PROFILE_README_PATH") else None)
+    if README is not None and not README.is_file():
+        print(f"README audit input does not exist: {README}", file=sys.stderr)
+        return 2
+
     failures = 0
     for name in (
         "hero-light.svg",
@@ -158,11 +179,14 @@ def main() -> int:
             print(line)
         failures += len(problems)
 
-    problems = audit_readme()
-    print(f"README.md: {'PASS' if not problems else str(len(problems)) + ' issue(s)'}")
-    for line in problems:
-        print(line)
-    failures += len(problems)
+    if README is None:
+        print("README audit: SKIPPED (pass --readme or set PROFILE_README_PATH)")
+    else:
+        problems = audit_readme(README)
+        print(f"{README}: {'PASS' if not problems else str(len(problems)) + ' issue(s)'}")
+        for line in problems:
+            print(line)
+        failures += len(problems)
 
     print(f"\n{failures} issue(s)")
     return 1 if failures else 0

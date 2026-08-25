@@ -383,7 +383,7 @@ def write_unified():
     out_dir = os.path.dirname(os.path.abspath(__file__))
     for theme in ("dark", "light"):
         path = os.path.join(out_dir, f"table-{theme}.svg")
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8", newline="\n") as f:
             f.write(unified_svg(theme))
     print(f"wrote 2 unified table svgs to {out_dir}/", file=sys.stderr)
 

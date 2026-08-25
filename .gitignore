@@ -3,4 +3,5 @@ __pycache__/
 .vscode/settings.json
 assets/generated/
 assets/archive/
+assets/cells/
 assets/pfp/archive/

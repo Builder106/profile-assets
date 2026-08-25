@@ -6,7 +6,6 @@ from pathlib import Path
 
 import pytest
 
-
 ASSETS = Path(__file__).parents[1] / "assets"
 sys.path.insert(0, str(ASSETS))
 
@@ -87,7 +86,7 @@ def test_audit_helpers_and_svg_paths(audit, tmp_path):
 
     svg = tmp_path / "sample-light.svg"
     svg.write_text(
-        '''<svg xmlns="http://www.w3.org/2000/svg">
+        """<svg xmlns="http://www.w3.org/2000/svg">
           <style>.x { fill: #000000; fill: #ffffff; }</style>
           <g font-size="24" font-weight="700">
             <rect width="129" height="129" fill="#ffffff"/>
@@ -99,7 +98,7 @@ def test_audit_helpers_and_svg_paths(audit, tmp_path):
           <path stroke="#d0d7de"/>
           <g><text fill="url(#animated)">animated</text></g>
           <animate attributeName="x" repeatCount="indefinite"/>
-        </svg>''',
+        </svg>""",
         encoding="utf-8",
     )
     fills = audit.backgrounds(svg, "light")
@@ -120,20 +119,26 @@ def test_audit_readme_and_main(audit, tmp_path, monkeypatch, capsys):
         '<img src="x"> ![badge](https://img.shields.io/badge/test-777777)',
         encoding="utf-8",
     )
-    monkeypatch.setattr(audit, "README", readme)
-    problems = audit.audit_readme()
+    problems = audit.audit_readme(readme)
     assert any("no alt" in problem for problem in problems)
     assert any("badge" in problem for problem in problems)
 
     monkeypatch.setattr(audit, "audit_svg", lambda path: [])
-    monkeypatch.setattr(audit, "audit_readme", lambda: [])
-    assert audit.main() == 0
+    monkeypatch.setattr(audit, "audit_readme", lambda path: [])
+    assert audit.main(["--readme", str(readme)]) == 0
     assert "PASS" in capsys.readouterr().out
 
     monkeypatch.setattr(audit, "audit_svg", lambda path: ["issue"])
-    monkeypatch.setattr(audit, "audit_readme", lambda: ["readme issue"])
-    assert audit.main() == 1
+    monkeypatch.setattr(audit, "audit_readme", lambda path: ["readme issue"])
+    assert audit.main(["--readme", str(readme)]) == 1
     assert "issue(s)" in capsys.readouterr().out
+
+    monkeypatch.setattr(audit, "audit_svg", lambda path: [])
+    monkeypatch.setattr(audit, "audit_readme", lambda path: [])
+    assert audit.main([]) == 0
+    assert "SKIPPED" in capsys.readouterr().out
+    assert audit.main(["--readme", str(tmp_path / "missing.md")]) == 2
+    assert "does not exist" in capsys.readouterr().err
 
 
 def test_build_main_success_and_failure(monkeypatch, tmp_path, capsys):
@@ -158,7 +163,7 @@ def test_unified_generation_and_write_unified(cells, tmp_path, monkeypatch):
         assert svg.startswith("<svg")
         assert "BUILDER106" in svg
         assert "SYMBOLS" in svg
-        assert "class=\"now\"" in svg
+        assert 'class="now"' in svg
 
     cells.write_unified()
 
@@ -172,7 +177,7 @@ def test_build_run_reports_success_and_failure(monkeypatch):
         stderr = "err"
         returncode = 0
 
-    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: (calls.append(args) or Result()))
+    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: calls.append(args) or Result())
     assert build.run(["echo", "ok"])
     Result.returncode = 1
     assert not build.run(["false"])
