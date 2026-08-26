@@ -1,4 +1,4 @@
-name: Asset CI
+name: CI
 
 on:
   push:
@@ -9,22 +9,29 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   static:
     name: Static checks
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.13"
-          cache: pip
       - name: Install test and lint tools
-        run: python -m pip install pytest pytest-cov ruff
+        run: uv pip install --system pytest pytest-cov ruff
       - name: Run asset tests with coverage
-        run: python -m pytest
+        run: pytest
       - name: Check Ruff lint
         run: ruff check .
       - name: Check Ruff formatting
@@ -40,20 +47,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out asset repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Check out profile README
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: Builder106/Builder106
           path: profile-readme
           sparse-checkout: README.md
           persist-credentials: false
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.13"
       - name: Install audit dependency
-        run: python -m pip install pytest pytest-cov
+        run: uv pip install --system pytest pytest-cov
       - name: Audit assets and external profile README
         run: python assets/audit.py --readme profile-readme/README.md
 
@@ -62,10 +73,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Scan repository history
-        uses: gitleaks/gitleaks-action@v2
+        uses: gitleaks/gitleaks-action@v3
         env:
           GITHUB_TOKEN: ${{ github.token }}
