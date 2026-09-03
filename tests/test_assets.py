@@ -28,6 +28,11 @@ def cells():
 
 
 @pytest.fixture(scope="module")
+def flagships():
+    return load("gen_flagships")
+
+
+@pytest.fixture(scope="module")
 def palette():
     return load("make_palette")
 
@@ -67,6 +72,16 @@ def test_cell_generation_and_tables(cells, tmp_path, capsys):
     table = capsys.readouterr().out
     assert table.startswith("<table")
     assert "github.com/Builder106" in table
+
+
+def test_flagship_cards_and_variants(flagships, tmp_path):
+    card = flagships.card_svg("light", flagships.FLAGSHIPS[0])
+    assert 'role="img"' in card
+    assert "ocaml_limit" in card
+    assert "UNDER 1 MICROSECOND" in card
+
+    flagships.write_cards(tmp_path)
+    assert len(list(tmp_path.glob("*.svg"))) == len(flagships.FLAGSHIPS) * 2
 
 
 def test_palette_build_and_report(palette, capsys):
@@ -148,7 +163,7 @@ def test_build_main_success_and_failure(monkeypatch, tmp_path, capsys):
 
     monkeypatch.setattr(build, "run", lambda command, cwd=None: calls.append((command, cwd)) or True)
     build.main()
-    assert len(calls) == 2
+    assert len(calls) == 3
     assert "Build complete" in capsys.readouterr().out
 
     monkeypatch.setattr(build, "run", lambda command, cwd=None: False)

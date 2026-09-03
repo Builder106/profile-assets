@@ -70,9 +70,11 @@ def audit_svg(path: Path) -> list[str]:
         card = None
         for rect in group.iter(f"{SVG}rect"):
             fill = rect.get("fill", "")
-            if fill.startswith("#") and rect.get("width") in {"129", "120", "160"}:
+            if fill.startswith("#") and rect.get("width") in {"129", "120", "160", "478"}:
                 card = fill
                 break
+        if card is None:
+            card = group.get("data-bg")
         for text in group.iter(f"{SVG}text"):
             if card:
                 text.set("data-bg", card)
@@ -173,8 +175,16 @@ def main(argv: list[str] | None = None) -> int:
         "banner-light.svg",
         "banner-dark.svg",
     ):
-        problems = audit_svg(ASSETS / name)
+        path = ASSETS / name
+        problems = audit_svg(path)
         print(f"{name}: {'PASS' if not problems else str(len(problems)) + ' issue(s)'}")
+        for line in problems:
+            print(line)
+        failures += len(problems)
+
+    for path in sorted((ASSETS / "flagships").glob("*.svg")):
+        problems = audit_svg(path)
+        print(f"{path.relative_to(ASSETS)}: {'PASS' if not problems else str(len(problems)) + ' issue(s)'}")
         for line in problems:
             print(line)
         failures += len(problems)

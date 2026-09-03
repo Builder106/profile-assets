@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280" role="img" aria-label="LinuxBenchHub flagship card: Analyst project in Rails comparing major Linux systems side by side with automated speed tests on identical hardware.">
+  <g data-bg="#161b22">
+    <rect x="1" y="1" width="478" height="278" rx="14" fill="#161b22" stroke="#7d8590" stroke-width="2"/>
+    <g fill="#1f2630" opacity="0.55">
+      <circle cx="28" cy="58" r="1"/><circle cx="46" cy="58" r="1"/><circle cx="64" cy="58" r="1"/><circle cx="82" cy="58" r="1"/>
+      <circle cx="28" cy="76" r="1"/><circle cx="46" cy="76" r="1"/><circle cx="64" cy="76" r="1"/><circle cx="82" cy="76" r="1"/>
+      <circle cx="398" cy="58" r="1"/><circle cx="416" cy="58" r="1"/><circle cx="434" cy="58" r="1"/>
+      <circle cx="398" cy="76" r="1"/><circle cx="416" cy="76" r="1"/><circle cx="434" cy="76" r="1"/>
+    </g>
+    <rect x="2" y="2" width="476" height="6" rx="3" fill="#e8cb73"/>
+
+    <text x="26" y="36" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="600" letter-spacing="2" fill="#c1c5ca">FLAGSHIP 06</text>
+    <g data-bg="#33342d">
+      <rect x="387" y="19" width="67" height="24" rx="12" fill="#33342d"/>
+      <text x="420.5" y="35" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="12" font-weight="700" fill="#e8cb73" text-anchor="middle">Analyst</text>
+    </g>
+
+    <rect x="26" y="78" width="72" height="72" rx="12" fill="#33342d" stroke="#e8cb73" stroke-width="2"/>
+    <text x="62" y="124" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="27" font-weight="800" letter-spacing="-1" fill="#e8cb73" text-anchor="middle">LB</text>
+
+    <text x="122" y="91" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="23" font-weight="750" fill="#e6edf3">LinuxBenchHub</text>
+    <text x="122" y="116" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="600" letter-spacing="1.5" fill="#e8cb73">RAILS  /  ANALYST</text>
+    <text x="122" y="151" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#d5d8db">Linux performance lab</text>
+    <text x="122" y="174" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" fill="#c1c5ca">Automated speed tests comparing systems</text>
+    <text x="122" y="192" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" fill="#c1c5ca">on identical hardware.</text>
+
+    <line x1="26" y1="211" x2="454" y2="211" stroke="#7d8590" stroke-width="1" opacity="0.65"/>
+    <text x="26" y="235" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" letter-spacing="1.4" fill="#c1c5ca">TEST BED</text>
+    <text x="26" y="263" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="15" font-weight="800" fill="#e8cb73">IDENTICAL HARDWARE</text>
+    <text x="454" y="263" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" letter-spacing="1.2" fill="#c1c5ca" text-anchor="end">OPEN REPOSITORY</text>
+  </g>
+</svg>

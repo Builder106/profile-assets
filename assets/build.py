@@ -40,9 +40,13 @@ def main():
     print("\n2. Generating unified table SVGs...")
     ok &= run([sys.executable, "gen_cells.py", "unified"], cwd=assets_dir)
 
-    # 3. Rasterize SVGs to PNGs (optional, requires cairosvg or similar)
+    # 3. Generate flagship project cards
+    print("\n3. Generating flagship cards...")
+    ok &= run([sys.executable, "gen_flagships.py"], cwd=assets_dir)
+
+    # 4. Rasterize SVGs to PNGs (optional, requires cairosvg or similar)
     # For now, skip - PNGs can be generated separately if needed
-    # print("\n3. Rasterizing SVGs to PNGs...")
+    # print("\n4. Rasterizing SVGs to PNGs...")
     # ok &= run([...])
 
     if ok:
@@ -50,6 +54,7 @@ def main():
         print(f"  Generated in {assets_dir}:")
         print("    table-dark.svg, table-light.svg")
         print(f"    cells/: {len(list(cells_dir.glob('*.svg')))} SVGs")
+        print(f"    flagships/: {len(list((assets_dir / 'flagships').glob('*.svg')))} SVGs")
     else:
         print("\n✗ Build failed", file=sys.stderr)
         sys.exit(1)
