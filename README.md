@@ -12,7 +12,7 @@ python assets/audit.py --readme /path/to/Builder106/README.md
 python assets/build.py
 ```
 
-`assets/build.py` writes generated per-cell SVGs to `assets/cells/` (ignored by Git) and flagship cards to `assets/flagships/`. The flagship cards are reproducible, but remain versioned because they are published profile assets. The committed hero, table, banner, flagship-card, and profile-picture outputs are all published profile assets.
+`assets/build.py` writes generated per-cell SVGs to `assets/cells/` (ignored by Git) and the flagship index to `assets/flagships/`. The index is reproducible, but remains versioned because it is a published profile asset. The committed hero, table, banner, flagship-index, and profile-picture outputs are all published profile assets.
 
 ## Profile README asset URLs
 

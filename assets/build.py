@@ -40,8 +40,8 @@ def main():
     print("\n2. Generating unified table SVGs...")
     ok &= run([sys.executable, "gen_cells.py", "unified"], cwd=assets_dir)
 
-    # 3. Generate flagship project cards
-    print("\n3. Generating flagship cards...")
+    # 3. Generate flagship project index
+    print("\n3. Generating flagship index...")
     ok &= run([sys.executable, "gen_flagships.py"], cwd=assets_dir)
 
     # 4. Rasterize SVGs to PNGs (optional, requires cairosvg or similar)

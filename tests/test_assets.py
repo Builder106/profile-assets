@@ -74,14 +74,17 @@ def test_cell_generation_and_tables(cells, tmp_path, capsys):
     assert "github.com/Builder106" in table
 
 
-def test_flagship_cards_and_variants(flagships, tmp_path):
-    card = flagships.card_svg("light", flagships.FLAGSHIPS[0])
-    assert 'role="img"' in card
-    assert "ocaml_limit" in card
-    assert "UNDER 1 MICROSECOND" in card
+def test_flagship_index_and_variants(flagships, tmp_path):
+    index = flagships.index_svg("light")
+    assert 'role="img"' in index
+    assert "ocaml_limit" in index
+    assert "under 1 µs" in index
+    assert "Six projects, three questions." in index
+    with pytest.raises(ValueError, match="unknown flagship visual"):
+        flagships.visual("missing", 0, 0, "#000000", {"muted": "#000000", "rule": "#000000", "surface": "#ffffff"})
 
     flagships.write_cards(tmp_path)
-    assert len(list(tmp_path.glob("*.svg"))) == len(flagships.FLAGSHIPS) * 2
+    assert len(list(tmp_path.glob("*.svg"))) == 2
 
 
 def test_palette_build_and_report(palette, capsys):
