@@ -75,11 +75,14 @@ def test_cell_generation_and_tables(cells, tmp_path, capsys):
 
 
 def test_flagship_index_and_variants(flagships, tmp_path):
-    index = flagships.index_svg("light")
-    assert 'role="img"' in index
-    assert "ocaml_limit" in index
-    assert "under 1 µs" in index
-    assert "Six projects, three questions." in index
+    for theme in ("light", "dark"):
+        index = flagships.index_svg(theme)
+        assert 'role="img"' in index
+        assert "ocaml_limit" in index
+        assert "under 1 µs" in index
+        assert "Six projects that earn a closer look." in index
+        assert "#f7f4ed" not in index
+        assert "#f0ece3" not in index
     with pytest.raises(ValueError, match="unknown flagship visual"):
         flagships.visual("missing", 0, 0, "#000000", {"muted": "#000000", "rule": "#000000", "surface": "#ffffff"})
 

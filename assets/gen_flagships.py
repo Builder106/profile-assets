@@ -13,7 +13,7 @@ from pathlib import Path
 
 from gen_cells import disc_accent, disc_text
 
-W, H = 1200, 760
+W, H = 1200, 800
 
 FLAGSHIPS = (
     {
@@ -182,17 +182,21 @@ def index_svg(theme):
     """Return the accessible portfolio index for one color scheme."""
     is_dark = theme == "dark"
     neutral = {
-        "background": "#12161c" if is_dark else "#f7f4ed",
-        "surface": "#181d23" if is_dark else "#f0ece3",
-        "fg": "#f0eee8" if is_dark else "#171a1d",
-        "muted": "#b7bcc1" if is_dark else "#3d444b",
-        "faded": "#a9b0b7" if is_dark else "#444c55",
-        "rule": "#8b949e" if is_dark else "#6e7781",
+        "background": "#0c1220" if is_dark else "#edf3fa",
+        "surface": "#131d2e" if is_dark else "#ffffff",
+        "panel": "#080d17" if is_dark else "#101a2b",
+        "fg": "#f8fafc" if is_dark else "#101827",
+        "muted": "#b8c4d5" if is_dark else "#42536a",
+        "faded": "#8fa0b8" if is_dark else "#65758c",
+        "rule": "#52647c" if is_dark else "#b8c5d6",
+        "panel_fg": "#f8fafc",
+        "panel_muted": "#b9c5d4",
+        "panel_rule": "#40506a",
     }
     by_id = {flagship["id"]: flagship for flagship in FLAGSHIPS}
-    title = "Six projects, three questions."
-    description = "How fast? Who does it serve? What can be trusted?"
-    alt = "Six-project index grouped by Performance, Health and evidence, and Security and markets. " + " ".join(
+    title = "Six projects that earn a closer look."
+    description = "Speed. Human stakes. Defensible results."
+    alt = "Six-project editorial index focused on performance, health and evidence, and security and markets. " + " ".join(
         flagship["alt"] for flagship in FLAGSHIPS
     )
     output = [
@@ -200,40 +204,55 @@ def index_svg(theme):
         f"  <title>{esc(title)} {esc(description)}</title>",
         f'  <g data-bg="{neutral["background"]}">',
         f'    <rect width="{W}" height="{H}" fill="{neutral["background"]}"/>',
-        "    " + svg_text(56, 68, title, size=40, fill=neutral["fg"], weight="800"),
-        "    " + svg_text(56, 102, description, size=17, fill=neutral["muted"]),
-        "    " + svg_text(1144, 63, "06", size=30, fill=neutral["fg"], weight="800", family="mono", anchor="end"),
-        "    " + svg_text(1144, 91, "selected builds", size=12, fill=neutral["faded"], family="mono", anchor="end"),
-        f'    <line x1="56" y1="132" x2="1144" y2="132" stroke="{neutral["rule"]}" stroke-width="1.5"/>',
+        f'    <g data-bg="{neutral["panel"]}">',
+        f'      <rect width="346" height="{H}" fill="{neutral["panel"]}"/>',
+        "      " + svg_text(40, 70, "Selected", size=38, fill=neutral["panel_fg"], weight="800"),
+        "      " + svg_text(40, 114, "builds.", size=38, fill=neutral["panel_fg"], weight="800"),
+        "      " + svg_text(40, 164, "Six projects held to the same questions:", size=15, fill=neutral["panel_muted"]),
+        "      " + svg_text(40, 192, "How fast? Who does it serve?", size=15, fill=neutral["panel_muted"]),
+        "      " + svg_text(40, 220, "What can be trusted?", size=15, fill=neutral["panel_muted"]),
+        f'      <line x1="40" y1="258" x2="306" y2="258" stroke="{neutral["panel_rule"]}" stroke-width="1"/>',
+        "      " + svg_text(40, 320, "01", size=18, fill=neutral["panel_muted"], family="mono", weight="700"),
+        "      " + svg_text(82, 320, "Performance", size=18, fill=neutral["panel_fg"], weight="750"),
+        "      " + svg_text(82, 348, "Systems under load", size=13, fill=neutral["panel_muted"]),
+        f'      <line x1="40" y1="382" x2="306" y2="382" stroke="{neutral["panel_rule"]}" stroke-width="1"/>',
+        "      " + svg_text(40, 444, "02", size=18, fill=neutral["panel_muted"], family="mono", weight="700"),
+        "      " + svg_text(82, 444, "Health + evidence", size=18, fill=neutral["panel_fg"], weight="750"),
+        "      " + svg_text(82, 472, "Data with human stakes", size=13, fill=neutral["panel_muted"]),
+        f'      <line x1="40" y1="506" x2="306" y2="506" stroke="{neutral["panel_rule"]}" stroke-width="1"/>',
+        "      " + svg_text(40, 568, "03", size=18, fill=neutral["panel_muted"], family="mono", weight="700"),
+        "      " + svg_text(82, 568, "Security + markets", size=18, fill=neutral["panel_fg"], weight="750"),
+        "      " + svg_text(82, 596, "Trust, risk, and signal", size=13, fill=neutral["panel_muted"]),
+        f'      <line x1="40" y1="630" x2="306" y2="630" stroke="{neutral["panel_rule"]}" stroke-width="1"/>',
+        "      " + svg_text(40, 746, "BUILDER106", size=12, fill=neutral["panel_muted"], family="mono", weight="700", letter_spacing=1.4),
+        "      " + svg_text(40, 772, "Project index / 06", size=12, fill=neutral["panel_muted"], family="mono"),
+        "    </g>",
+        "    " + svg_text(386, 74, title, size=36, fill=neutral["fg"], weight="800"),
+        "    " + svg_text(386, 108, description, size=17, fill=neutral["muted"]),
+        "    " + svg_text(1156, 76, "06", size=32, fill=neutral["fg"], weight="800", family="mono", anchor="end"),
+        "    " + svg_text(1156, 106, "projects", size=12, fill=neutral["faded"], family="mono", anchor="end"),
+        f'    <line x1="386" y1="146" x2="1156" y2="146" stroke="{neutral["rule"]}" stroke-width="1"/>',
     ]
 
-    row_y = 158
-    row_h = 176
-    project_x = (304, 766)
-    visual_x = (632, 1040)
-    for group_index, (group_name, group_note, project_ids) in enumerate(GROUPS):
-        y = row_y + group_index * row_h
-        row_fill = neutral["surface"] if group_index % 2 == 0 else neutral["background"]
-        output.extend(
-            [
-                f'    <g data-bg="{row_fill}">',
-                f'      <rect x="40" y="{y}" width="1120" height="160" fill="{row_fill}"/>',
-                "      " + svg_text(56, y + 35, group_name, size=20, fill=neutral["fg"], weight="750"),
-                "      " + svg_text(56, y + 62, group_note, size=13, fill=neutral["muted"]),
-                f'      <line x1="272" y1="{y + 16}" x2="272" y2="{y + 144}" stroke="{neutral["rule"]}" stroke-width="1"/>',
-            ]
-        )
+    card_y = (180, 386, 592)
+    card_x = (386, 778)
+    card_w, card_h = 378, 180
+    for group_index, (_, _, project_ids) in enumerate(GROUPS):
+        y = card_y[group_index]
         for index, project_id in enumerate(project_ids):
             flagship = by_id[project_id]
-            x = project_x[index]
+            x = card_x[index]
             accent = disc_accent(flagship["track"], theme)
             output.extend(
                 [
-                    "      " + svg_text(x, y + 34, flagship["project"], size=23, fill=neutral["fg"], weight="800"),
+                    f'    <g data-bg="{neutral["surface"]}">',
+                    f'      <rect x="{x}" y="{y}" width="{card_w}" height="{card_h}" rx="6" fill="{neutral["surface"]}"/>',
+                    f'      <rect x="{x + 24}" y="{y + 20}" width="40" height="3" rx="1.5" fill="{accent}"/>',
+                    "      " + svg_text(x + 24, y + 54, flagship["project"], size=22, fill=neutral["fg"], weight="800"),
                     "      "
                     + svg_text(
-                        x,
-                        y + 58,
+                        x + 24,
+                        y + 78,
                         flagship["stack"],
                         size=11,
                         fill=disc_text(flagship["track"], theme),
@@ -243,34 +262,30 @@ def index_svg(theme):
                     ),
                     "      "
                     + svg_text(
-                        x,
-                        y + 92,
+                        x + 24,
+                        y + 108,
                         flagship["headline_lines"][0],
-                        size=14,
+                        size=13,
                         fill=neutral["muted"],
                         weight="650",
                     ),
-                    "      " + svg_text(x, y + 112, flagship["headline_lines"][1], size=14, fill=neutral["muted"]),
+                    "      " + svg_text(x + 24, y + 127, flagship["headline_lines"][1], size=13, fill=neutral["muted"]),
+                    f'      <line x1="{x + 24}" y1="{y + 142}" x2="{x + 230}" y2="{y + 142}" stroke="{neutral["rule"]}" stroke-width="1"/>',
                     "      "
                     + svg_text(
-                        x,
-                        y + 140,
+                        x + 24,
+                        y + 160,
                         flagship["signal_label"],
-                        size=10,
+                        size=9,
                         fill=neutral["faded"],
                         family="mono",
                         letter_spacing=1,
                     ),
-                    "      " + svg_text(x, y + 158, flagship["signal"], size=16, fill=neutral["fg"], weight="800"),
-                    "      " + visual(flagship["visual"], visual_x[index], y + 45, accent, neutral),
+                    "      " + svg_text(x + 24, y + 178, flagship["signal"], size=15, fill=neutral["fg"], weight="800"),
+                    "      " + visual(flagship["visual"], x + 246, y + 44, accent, neutral),
+                    "    </g>",
                 ]
             )
-        output.extend(
-            [
-                "    </g>",
-                f'    <line x1="40" y1="{y + 160}" x2="1160" y2="{y + 160}" stroke="{neutral["rule"]}" stroke-width="1.5"/>',
-            ]
-        )
 
     output.extend(["  </g>", "</svg>", ""])
     return "\n".join(output)
