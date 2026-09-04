@@ -187,17 +187,18 @@ def index_svg(theme):
         "panel": "#080d17" if is_dark else "#101a2b",
         "fg": "#f8fafc" if is_dark else "#101827",
         "muted": "#b8c4d5" if is_dark else "#42536a",
-        "faded": "#8fa0b8" if is_dark else "#65758c",
-        "rule": "#52647c" if is_dark else "#b8c5d6",
+        "faded": "#9aa9bf" if is_dark else "#475263",
+        "rule": "#566982" if is_dark else "#748eaf",
         "panel_fg": "#f8fafc",
         "panel_muted": "#b9c5d4",
-        "panel_rule": "#40506a",
+        "panel_rule": "#4d6180" if is_dark else "#40506a",
     }
     by_id = {flagship["id"]: flagship for flagship in FLAGSHIPS}
     title = "Six projects that earn a closer look."
     description = "Speed. Human stakes. Defensible results."
-    alt = "Six-project editorial index focused on performance, health and evidence, and security and markets. " + " ".join(
-        flagship["alt"] for flagship in FLAGSHIPS
+    alt = (
+        "Six-project editorial index focused on performance, health and evidence, and security and markets. "
+        + " ".join(flagship["alt"] for flagship in FLAGSHIPS)
     )
     output = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="{esc(alt)}">',
@@ -224,7 +225,10 @@ def index_svg(theme):
         "      " + svg_text(82, 568, "Security + markets", size=18, fill=neutral["panel_fg"], weight="750"),
         "      " + svg_text(82, 596, "Trust, risk, and signal", size=13, fill=neutral["panel_muted"]),
         f'      <line x1="40" y1="630" x2="306" y2="630" stroke="{neutral["panel_rule"]}" stroke-width="1"/>',
-        "      " + svg_text(40, 746, "BUILDER106", size=12, fill=neutral["panel_muted"], family="mono", weight="700", letter_spacing=1.4),
+        "      "
+        + svg_text(
+            40, 746, "BUILDER106", size=12, fill=neutral["panel_muted"], family="mono", weight="700", letter_spacing=1.4
+        ),
         "      " + svg_text(40, 772, "Project index / 06", size=12, fill=neutral["panel_muted"], family="mono"),
         "    </g>",
         "    " + svg_text(386, 74, title, size=36, fill=neutral["fg"], weight="800"),
