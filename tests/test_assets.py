@@ -29,6 +29,9 @@ def cells():
 
 @pytest.fixture(scope="module")
 def flagships():
+    path = ASSETS / "gen_flagships.py"
+    if not path.exists():
+        pytest.skip("gen_flagships.py not present (flagships cleared)")
     return load("gen_flagships")
 
 
@@ -144,6 +147,12 @@ def test_audit_readme_and_main(audit, tmp_path, monkeypatch, capsys):
     assert any("no alt" in problem for problem in problems)
     assert any("badge" in problem for problem in problems)
 
+    fake_assets = tmp_path / "assets"
+    fake_assets.mkdir()
+    fake_flagships = fake_assets / "flagships"
+    fake_flagships.mkdir()
+    (fake_flagships / "flagships-dark.svg").write_text("<svg/>", encoding="utf-8")
+    monkeypatch.setattr(audit, "ASSETS", fake_assets)
     monkeypatch.setattr(audit, "audit_svg", lambda path: [])
     monkeypatch.setattr(audit, "audit_readme", lambda path: [])
     assert audit.main(["--readme", str(readme)]) == 0
@@ -154,6 +163,8 @@ def test_audit_readme_and_main(audit, tmp_path, monkeypatch, capsys):
     assert audit.main(["--readme", str(readme)]) == 1
     assert "issue(s)" in capsys.readouterr().out
 
+    monkeypatch.setattr(audit, "ASSETS", tmp_path / "no_flagships")
+    (tmp_path / "no_flagships").mkdir()
     monkeypatch.setattr(audit, "audit_svg", lambda path: [])
     monkeypatch.setattr(audit, "audit_readme", lambda path: [])
     assert audit.main([]) == 0
@@ -169,8 +180,15 @@ def test_build_main_success_and_failure(monkeypatch, tmp_path, capsys):
 
     monkeypatch.setattr(build, "run", lambda command, cwd=None: calls.append((command, cwd)) or True)
     build.main()
-    assert len(calls) == 3
+    assert len(calls) == 2
     assert "Build complete" in capsys.readouterr().out
+
+    calls.clear()
+    (tmp_path / "gen_flagships.py").touch()
+    (tmp_path / "flagships").mkdir(exist_ok=True)
+    build.main()
+    assert len(calls) == 3
+    assert "flagships/:" in capsys.readouterr().out
 
     monkeypatch.setattr(build, "run", lambda command, cwd=None: False)
     with pytest.raises(SystemExit, match="1"):

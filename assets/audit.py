@@ -182,12 +182,14 @@ def main(argv: list[str] | None = None) -> int:
             print(line)
         failures += len(problems)
 
-    for path in sorted((ASSETS / "flagships").glob("*.svg")):
-        problems = audit_svg(path)
-        print(f"{path.relative_to(ASSETS)}: {'PASS' if not problems else str(len(problems)) + ' issue(s)'}")
-        for line in problems:
-            print(line)
-        failures += len(problems)
+    flagships_dir = ASSETS / "flagships"
+    if flagships_dir.exists():
+        for path in sorted(flagships_dir.glob("*.svg")):
+            problems = audit_svg(path)
+            print(f"{path.relative_to(ASSETS)}: {'PASS' if not problems else str(len(problems)) + ' issue(s)'}")
+            for line in problems:
+                print(line)
+            failures += len(problems)
 
     if README is None:
         print("README audit: SKIPPED (pass --readme or set PROFILE_README_PATH)")

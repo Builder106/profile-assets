@@ -41,8 +41,12 @@ def main():
     ok &= run([sys.executable, "gen_cells.py", "unified"], cwd=assets_dir)
 
     # 3. Generate flagship project index
-    print("\n3. Generating flagship index...")
-    ok &= run([sys.executable, "gen_flagships.py"], cwd=assets_dir)
+    flagships_script = assets_dir / "gen_flagships.py"
+    if flagships_script.exists():
+        print("\n3. Generating flagship index...")
+        ok &= run([sys.executable, "gen_flagships.py"], cwd=assets_dir)
+    else:
+        print("\n3. Flagship index cleared (skipping)...")
 
     # 4. Rasterize SVGs to PNGs (optional, requires cairosvg or similar)
     # For now, skip - PNGs can be generated separately if needed
@@ -54,7 +58,9 @@ def main():
         print(f"  Generated in {assets_dir}:")
         print("    table-dark.svg, table-light.svg")
         print(f"    cells/: {len(list(cells_dir.glob('*.svg')))} SVGs")
-        print(f"    flagships/: {len(list((assets_dir / 'flagships').glob('*.svg')))} SVGs")
+        flagships_dir = assets_dir / "flagships"
+        if flagships_dir.exists():
+            print(f"    flagships/: {len(list(flagships_dir.glob('*.svg')))} SVGs")
     else:
         print("\n✗ Build failed", file=sys.stderr)
         sys.exit(1)
