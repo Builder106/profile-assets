@@ -28,14 +28,6 @@ def cells():
 
 
 @pytest.fixture(scope="module")
-def flagships():
-    path = ASSETS / "gen_flagships.py"
-    if not path.exists():
-        pytest.skip("gen_flagships.py not present (flagships cleared)")
-    return load("gen_flagships")
-
-
-@pytest.fixture(scope="module")
 def palette():
     return load("make_palette")
 
@@ -80,24 +72,6 @@ def test_cell_generation_and_tables(cells, tmp_path, capsys):
     table = capsys.readouterr().out
     assert table.startswith("<table")
     assert "github.com/Builder106" in table
-
-
-def test_flagship_index_and_variants(flagships, tmp_path, monkeypatch, capsys):
-    for theme in ("light", "dark"):
-        index = flagships.index_svg(theme)
-        assert 'role="img"' in index
-        assert "ocaml_limit" in index
-        assert "under 1 µs" in index
-        assert "Six projects that earn a closer look." in index
-        assert "#f7f4ed" not in index
-        assert "#f0ece3" not in index
-
-    flagships.write_cards(tmp_path)
-    assert len(list(tmp_path.glob("*.svg"))) == 2
-
-    monkeypatch.setattr(flagships, "ASSETS", tmp_path)
-    flagships.main()
-    assert "Generated flagships" in capsys.readouterr().out
 
 
 def test_stats_and_langs_generation(stats, tmp_path, monkeypatch, capsys):
@@ -175,9 +149,6 @@ def test_audit_readme_and_main(audit, tmp_path, monkeypatch, capsys):
 
     fake_assets = tmp_path / "assets"
     fake_assets.mkdir()
-    fake_flagships = fake_assets / "flagships"
-    fake_flagships.mkdir()
-    (fake_flagships / "flagships-dark.svg").write_text("<svg/>", encoding="utf-8")
     (fake_assets / "stats-dark.svg").write_text("<svg/>", encoding="utf-8")
     monkeypatch.setattr(audit, "ASSETS", fake_assets)
     monkeypatch.setattr(audit, "audit_svg", lambda path: [])
@@ -190,8 +161,8 @@ def test_audit_readme_and_main(audit, tmp_path, monkeypatch, capsys):
     assert audit.main(["--readme", str(readme)]) == 1
     assert "issue(s)" in capsys.readouterr().out
 
-    monkeypatch.setattr(audit, "ASSETS", tmp_path / "no_flagships")
-    (tmp_path / "no_flagships").mkdir()
+    monkeypatch.setattr(audit, "ASSETS", tmp_path / "empty_assets")
+    (tmp_path / "empty_assets").mkdir()
     monkeypatch.setattr(audit, "audit_svg", lambda path: [])
     monkeypatch.setattr(audit, "audit_readme", lambda path: [])
     assert audit.main([]) == 0
@@ -211,13 +182,10 @@ def test_build_main_success_and_failure(monkeypatch, tmp_path, capsys):
     assert "Build complete" in capsys.readouterr().out
 
     calls.clear()
-    (tmp_path / "gen_flagships.py").touch()
-    (tmp_path / "flagships").mkdir(exist_ok=True)
     (tmp_path / "gen_stats.py").touch()
     build.main()
-    assert len(calls) == 4
+    assert len(calls) == 3
     out = capsys.readouterr().out
-    assert "flagships/:" in out
     assert "stats-dark.svg" in out
 
     monkeypatch.setattr(build, "run", lambda command, cwd=None: False)

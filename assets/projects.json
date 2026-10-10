@@ -12,7 +12,6 @@
       "signal_label": "matching latency",
       "signal": "under 1 µs",
       "demo": "https://ocaml-lob.vercel.app/",
-      "flagship": true,
       "periodic": { "period": 0, "slot": 0, "num": 1, "symbol": "Oc" }
     },
     {
@@ -26,7 +25,6 @@
       "signal_label": "implementation",
       "signal": "zero deps",
       "demo": "https://qforge-neural.vercel.app",
-      "flagship": false,
       "periodic": { "period": 0, "slot": 7, "num": 2, "symbol": "C" }
     },
     {
@@ -40,7 +38,6 @@
       "signal_label": "verification",
       "signal": "SLSA verified",
       "demo": "https://clear-hash.vercel.app",
-      "flagship": true,
       "periodic": { "period": 1, "slot": 0, "num": 3, "symbol": "Rs" }
     },
     {
@@ -54,7 +51,6 @@
       "signal_label": "market edge",
       "signal": "+2.58% alpha",
       "demo": "https://capitolalpha.vercel.app/",
-      "flagship": false,
       "periodic": { "period": 1, "slot": 1, "num": 4, "symbol": "Py" }
     },
     {
@@ -68,7 +64,6 @@
       "signal_label": "observed pattern",
       "signal": "3x more ER visits",
       "demo": "https://datafest-2026.vercel.app/",
-      "flagship": true,
       "periodic": { "period": 1, "slot": 6, "num": 5, "symbol": "R" }
     },
     {
@@ -82,7 +77,6 @@
       "signal_label": "environment",
       "signal": "PPO economy",
       "demo": "https://econ-os.vercel.app",
-      "flagship": true,
       "periodic": { "period": 1, "slot": 7, "num": 6, "symbol": "Py" }
     },
     {
@@ -96,7 +90,6 @@
       "signal_label": "test condition",
       "signal": "same hardware",
       "demo": "https://linuxbenchhub.vercel.app/",
-      "flagship": false,
       "periodic": { "period": 2, "slot": 0, "num": 7, "symbol": "Rb" }
     },
     {
@@ -110,7 +103,6 @@
       "signal_label": "community",
       "signal": "live scholars",
       "demo": "https://staija.org",
-      "flagship": false,
       "periodic": { "period": 2, "slot": 1, "num": 8, "symbol": "Vu" }
     },
     {
@@ -124,7 +116,6 @@
       "signal_label": "gamification",
       "signal": "live streaks",
       "demo": "https://getstudysprint.vercel.app",
-      "flagship": false,
       "periodic": { "period": 2, "slot": 2, "num": 9, "symbol": "Ts" }
     },
     {
@@ -138,7 +129,6 @@
       "signal_label": "test suite",
       "signal": "123 tests pass",
       "demo": "https://trymicromatch.vercel.app",
-      "flagship": false,
       "periodic": { "period": 2, "slot": 3, "num": 10, "symbol": "Sv" }
     },
     {
@@ -152,7 +142,6 @@
       "signal_label": "recognition",
       "signal": "Yale Africa IV",
       "demo": "https://medcore-health.vercel.app",
-      "flagship": false,
       "periodic": { "period": 2, "slot": 4, "num": 11, "symbol": "Re" }
     },
 
@@ -167,7 +156,6 @@
       "signal_label": "renderer",
       "signal": "WebGL 3D room",
       "demo": "https://yinkavaughan.me/",
-      "flagship": false,
       "periodic": { "period": 2, "slot": 5, "num": 12, "symbol": "Ts" }
     },
     {
@@ -181,7 +169,6 @@
       "signal_label": "retrieval",
       "signal": "ensemble RAG",
       "demo": "https://tradetell.streamlit.app",
-      "flagship": false,
       "periodic": { "period": 2, "slot": 6, "num": 13, "symbol": "Py" }
     },
     {
@@ -194,7 +181,6 @@
       "headline": "iOS audio sanctuary app with dynamic spatial soundscapes.",
       "signal_label": "audio",
       "signal": "spatial audio",
-      "flagship": false,
       "periodic": { "period": 2, "slot": 7, "num": 14, "symbol": "Sw" }
     },
     {
@@ -208,7 +194,6 @@
       "signal_label": "latency p50",
       "signal": "p50 ≤ 200 µs",
       "demo": "https://halberd-keep.vercel.app",
-      "flagship": true,
       "periodic": { "period": 3, "slot": 0, "num": 15, "symbol": "Go" }
     },
     {
@@ -222,7 +207,6 @@
       "signal_label": "contract size",
       "signal": "188-byte Yul",
       "demo": "https://quarry-mev.vercel.app",
-      "flagship": false,
       "periodic": { "period": 3, "slot": 1, "num": 16, "symbol": "Yu" }
     },
     {
@@ -236,7 +220,6 @@
       "signal_label": "privacy gate",
       "signal": "0 B egress",
       "demo": "https://enclave-iota.vercel.app",
-      "flagship": true,
       "periodic": { "period": 3, "slot": 2, "num": 17, "symbol": "Nx" }
     },
 
@@ -251,7 +234,6 @@
       "signal_label": "OCR accuracy",
       "signal": "99% parse",
       "demo": "https://helm-bridge.vercel.app",
-      "flagship": false,
       "periodic": { "period": 3, "slot": 3, "num": 18, "symbol": "Ts" }
     },
     {
@@ -264,7 +246,6 @@
       "headline": "Android audio inspection and metadata tagger for mobile devices.",
       "signal_label": "format support",
       "signal": "lossless tags",
-      "flagship": false,
       "periodic": { "period": 3, "slot": 4, "num": 19, "symbol": "Kt" }
     },
     {
@@ -277,7 +258,6 @@
       "headline": "Terminal-based arcade game engine running in ANSI graphics.",
       "signal_label": "engine",
       "signal": "pure ANSI",
-      "flagship": false,
       "periodic": { "period": 3, "slot": 5, "num": 20, "symbol": "Rs" }
     }
   ]

@@ -40,18 +40,10 @@ def main():
     print("\n2. Generating unified table SVGs...")
     ok &= run([sys.executable, "gen_cells.py", "unified"], cwd=assets_dir)
 
-    # 3. Generate flagship project index
-    flagships_script = assets_dir / "gen_flagships.py"
-    if flagships_script.exists():
-        print("\n3. Generating flagship index...")
-        ok &= run([sys.executable, "gen_flagships.py"], cwd=assets_dir)
-    else:
-        print("\n3. Flagship index cleared (skipping)...")
-
-    # 4. Generate in-house telemetry and language SVGs
+    # 3. Generate in-house telemetry and language SVGs
     stats_script = assets_dir / "gen_stats.py"
     if stats_script.exists():
-        print("\n4. Generating telemetry and language SVGs...")
+        print("\n3. Generating telemetry and language SVGs...")
         ok &= run([sys.executable, "gen_stats.py"], cwd=assets_dir)
 
     if ok:
@@ -59,9 +51,6 @@ def main():
         print(f"  Generated in {assets_dir}:")
         print("    table-dark.svg, table-light.svg")
         print(f"    cells/: {len(list(cells_dir.glob('*.svg')))} SVGs")
-        flagships_dir = assets_dir / "flagships"
-        if flagships_dir.exists():
-            print(f"    flagships/: {len(list(flagships_dir.glob('*.svg')))} SVGs")
         print("    stats-dark.svg, stats-light.svg, langs-dark.svg, langs-light.svg")
 
     else:
