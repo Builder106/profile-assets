@@ -9,6 +9,8 @@ checks are skipped so the maintenance README is never audited accidentally.
     python3 audit.py --readme /path/to/Builder106/README.md
 """
 
+from __future__ import annotations
+
 import argparse
 import os
 import re

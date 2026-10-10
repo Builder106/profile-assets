@@ -126,8 +126,8 @@
     <rect class="pulse" style="animation-delay: -1.68s" x="0.5" y="0.5" width="129" height="3" rx="1.5" fill="#73b1e8"/>
     <text x="10" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="500" fill="#8fc1ed">08</text>
     <text x="120" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="#8fc1ed" text-anchor="end">SWE</text>
-    <text x="65" y="76" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="50" font-weight="700" fill="#e6edf3" text-anchor="middle" letter-spacing="-1">Ts</text>
-    <text x="65" y="101" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#d5d8db" text-anchor="middle">TypeScript</text>
+    <text x="65" y="76" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="50" font-weight="700" fill="#e6edf3" text-anchor="middle" letter-spacing="-1">Vu</text>
+    <text x="65" y="101" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#d5d8db" text-anchor="middle">Vue</text>
     <text x="65" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#c1c5ca" text-anchor="middle">STAIJA</text>
   </g>
   <g class="cell" style="animation-delay: 2.00s" transform="translate(330, 420)">
@@ -159,8 +159,8 @@
     <rect class="pulse" style="animation-delay: -2.31s" x="0.5" y="0.5" width="129" height="3" rx="1.5" fill="#73e8cb"/>
     <text x="10" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="500" fill="#73e8cb">11</text>
     <text x="120" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="#73e8cb" text-anchor="end">HealthTech</text>
-    <text x="65" y="76" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="50" font-weight="700" fill="#e6edf3" text-anchor="middle" letter-spacing="-1">Ts</text>
-    <text x="65" y="101" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#d5d8db" text-anchor="middle">TypeScript</text>
+    <text x="65" y="76" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="50" font-weight="700" fill="#e6edf3" text-anchor="middle" letter-spacing="-1">Re</text>
+    <text x="65" y="101" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#d5d8db" text-anchor="middle">React</text>
     <text x="65" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#c1c5ca" text-anchor="middle">MedCore</text>
   </g>
   <g class="cell" style="animation-delay: 2.75s" transform="translate(747, 420)">
@@ -218,8 +218,8 @@
     <rect class="pulse" style="animation-delay: -3.36s" x="0.5" y="0.5" width="129" height="3" rx="1.5" fill="#e87373"/>
     <text x="10" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="500" fill="#f0a1a1">16</text>
     <text x="120" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="#f0a1a1" text-anchor="end">Cybersec</text>
-    <text x="65" y="76" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="50" font-weight="700" fill="#e6edf3" text-anchor="middle" letter-spacing="-1">Ts</text>
-    <text x="65" y="101" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#d5d8db" text-anchor="middle">TypeScript</text>
+    <text x="65" y="76" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="50" font-weight="700" fill="#e6edf3" text-anchor="middle" letter-spacing="-1">Yu</text>
+    <text x="65" y="101" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#d5d8db" text-anchor="middle">Yul</text>
     <text x="65" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#c1c5ca" text-anchor="middle">quarry</text>
   </g>
   <g class="cell" style="animation-delay: 4.00s" transform="translate(330, 565)">
@@ -229,8 +229,8 @@
     <rect class="pulse" style="animation-delay: -3.57s" x="0.5" y="0.5" width="129" height="3" rx="1.5" fill="#e873de"/>
     <text x="10" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="500" fill="#ef9de8">17</text>
     <text x="120" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="#ef9de8" text-anchor="end">AI/ML</text>
-    <text x="65" y="76" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="50" font-weight="700" fill="#e6edf3" text-anchor="middle" letter-spacing="-1">Ts</text>
-    <text x="65" y="101" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#d5d8db" text-anchor="middle">TypeScript</text>
+    <text x="65" y="76" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="50" font-weight="700" fill="#e6edf3" text-anchor="middle" letter-spacing="-1">Nx</text>
+    <text x="65" y="101" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#d5d8db" text-anchor="middle">Next.js</text>
     <text x="65" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="#c1c5ca" text-anchor="middle">enclave</text>
   </g>
   <g class="cell" style="animation-delay: 4.25s" transform="translate(469, 565)">

@@ -104,14 +104,14 @@
       "repo": "staija",
       "name": "STAIJA",
       "track": "W",
-      "lang": "TypeScript",
+      "lang": "Vue",
       "stack": "Vue 3 / SWE",
       "headline": "Mentorship workflow and admissions for Nigeria STEM scholars.",
       "signal_label": "community",
       "signal": "live scholars",
       "demo": "https://staija.org",
       "flagship": false,
-      "periodic": { "period": 2, "slot": 1, "num": 8, "symbol": "Ts" }
+      "periodic": { "period": 2, "slot": 1, "num": 8, "symbol": "Vu" }
     },
     {
       "id": "StudySprint",
@@ -146,15 +146,16 @@
       "repo": "med-core",
       "name": "MedCore",
       "track": "H",
-      "lang": "TypeScript",
+      "lang": "React",
       "stack": "React / HealthTech",
       "headline": "Digital medical records platform designed for African clinics.",
       "signal_label": "recognition",
       "signal": "Yale Africa IV",
       "demo": "https://medcore-health.vercel.app",
       "flagship": false,
-      "periodic": { "period": 2, "slot": 4, "num": 11, "symbol": "Ts" }
+      "periodic": { "period": 2, "slot": 4, "num": 11, "symbol": "Re" }
     },
+
     {
       "id": "portfolio",
       "repo": "builder106.github.io",
@@ -215,29 +216,30 @@
       "repo": "quarry",
       "name": "quarry",
       "track": "Y",
-      "lang": "TypeScript",
+      "lang": "Yul",
       "stack": "Solidity / Cybersec",
       "headline": "Bare-metal MEV arbitrage back-running engine with Yul executor.",
       "signal_label": "contract size",
       "signal": "188-byte Yul",
       "demo": "https://quarry-mev.vercel.app",
       "flagship": false,
-      "periodic": { "period": 3, "slot": 1, "num": 16, "symbol": "Ts" }
+      "periodic": { "period": 3, "slot": 1, "num": 16, "symbol": "Yu" }
     },
     {
       "id": "enclave",
       "repo": "enclave",
       "name": "enclave",
       "track": "L",
-      "lang": "TypeScript",
+      "lang": "Next.js",
       "stack": "Next.js / AI/ML",
       "headline": "Private clinical document extraction workbench measuring leakage.",
       "signal_label": "privacy gate",
       "signal": "0 B egress",
       "demo": "https://enclave-iota.vercel.app",
       "flagship": true,
-      "periodic": { "period": 3, "slot": 2, "num": 17, "symbol": "Ts" }
+      "periodic": { "period": 3, "slot": 2, "num": 17, "symbol": "Nx" }
     },
+
     {
       "id": "helm",
       "repo": "helm",
