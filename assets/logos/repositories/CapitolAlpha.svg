@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .bg { fill: #fafbfc; }
+    .fg { fill: #15803d; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0a1019; }
+      .fg { fill: #22c55e; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32"/>
+  <text x="16" y="25" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="28" font-weight="700" text-anchor="middle" class="fg">&#945;</text>
+</svg>

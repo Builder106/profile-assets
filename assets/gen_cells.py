@@ -10,19 +10,20 @@ Usage:
     python3 gen_cells.py table > /tmp/t  # prints HTML <table> markup
 """
 
+import base64
 import json
 import os
 import sys
+import xml.etree.ElementTree as ET
+from html import escape
 from pathlib import Path
 
-# Every colour comes from palette.json, which mirrors the hero SVGs.
-# Regenerate it with make_palette.py; never hard-code a hex in here.
+# Neutral colors come from palette.json; brand colors come from upstream artwork.
 PALETTE = json.loads((Path(__file__).parent / "palette.json").read_text())
 NEUTRAL = PALETTE["neutral"]
 TRACK = PALETTE["tracks"]
 
 PROJECTS_DATA = json.loads((Path(__file__).parent / "projects.json").read_text())
-NOW_PROJECT = PROJECTS_DATA.get("now_project", "halberd")
 
 # Dynamically construct CELLS and REPO_NAME from projects.json
 CELLS = []
@@ -34,6 +35,37 @@ for p in PROJECTS_DATA["projects"]:
         CELLS.append((per["period"], per["slot"], per["num"], per["symbol"], p["lang"], p["id"], p["track"]))
 
 CELLS.sort(key=lambda c: (c[0], c[1]))
+
+
+SVG = "http://www.w3.org/2000/svg"
+FONT = "Arial, Helvetica, sans-serif"
+LOGOS = Path(__file__).parent / "logos"
+SOURCES = json.loads((LOGOS / "sources.json").read_text())
+DISPLAY_NAMES = {p["id"]: p["name"].replace("_", " ") for p in PROJECTS_DATA["projects"]}
+DISPLAY_NAMES.update(
+    {
+        "ocaml_limit": "OCaml Limit",
+        "IMC_Prosperity": "IMC Prosperity",
+        "celestial_sanctum": "Celestial Sanctum",
+        "ascii_arcade": "ASCII Arcade",
+    }
+)
+ET.register_namespace("", SVG)
+
+
+def embedded_logo(path: Path, colour: str | None = None, attribute: str = "fill") -> str:
+    source = path.read_bytes()
+    mime = {".svg": "image/svg+xml", ".webp": "image/webp", ".png": "image/png"}[path.suffix]
+    if colour is not None:
+        root = ET.fromstring(source)
+        root.set(attribute, colour)
+        source = ET.tostring(root)
+    return f"data:{mime};base64," + base64.b64encode(source).decode("ascii")
+
+
+def category_image(theme, disc, x=104, y=10):
+    source = embedded_logo(LOGOS / SOURCES["categories"][disc]["file"], NEUTRAL[theme]["muted"], "stroke")
+    return f'<image x="{x}" y="{y}" width="18" height="18" href="{source}" aria-hidden="true"/>'
 
 
 def disc_label(code):
@@ -57,71 +89,40 @@ def disc_text(code, theme):
 # Animation, declared in CSS rather than SMIL so that a reader who has asked
 # their OS for reduced motion actually gets a still image (WCAG 2.2.2).
 MOTION_CSS = """  <style>
-    .cell   { animation: reveal 0.55s both; }
-    .halo   { opacity: 0; animation: spotlight 16s linear infinite; }
-    .wave   { animation: wave 5s linear infinite; }
-    .pulse  { animation: pulse 4s ease-in-out infinite; }
-    .now    { animation: pulse 1.6s ease-in-out infinite; }
-    .ripple { transform-origin: center; animation: ripple 1.6s linear infinite; }
-    @keyframes reveal    { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes spotlight { 0% { opacity: 0; } 4%, 10% { opacity: 0.55; } 14%, 100% { opacity: 0; } }
-    @keyframes wave      { 0% { opacity: 0.4; } 10%, 20% { opacity: 1; } 30%, 100% { opacity: 0.4; } }
-    @keyframes pulse     { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    @keyframes ripple    { from { transform: scale(1); opacity: 0.5; } to { transform: scale(2.25); opacity: 0; } }
+    .cell { animation: reveal 0.55s ease-out both; }
+    @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) {
-      .cell, .halo, .wave, .pulse, .now, .ripple { animation: none; }
-      .cell, .wave, .pulse, .now { opacity: 1; }
-      .halo, .ripple { opacity: 0; }
+      .cell { animation: none; opacity: 1; }
     }
   </style>"""
 
 
 def cell_svg(theme, num, symbol, lang, project, disc):
-    is_dark = theme == "dark"
     n = NEUTRAL[theme]
-    fg = n["fg"]
-    muted = n["muted"]
-    faded = n["faded"]
-    border = n["border"]
-    accent = disc_accent(disc, theme)
-    label_ink = disc_text(disc, theme)
-    cardbg = disc_tint(disc, theme)  # per-discipline tinted bg
-    # Gradient overlay on top of the tinted bg, for extra depth at the top edge
-    tint_opacity_top = 0.45 if is_dark else 0.35
-    grad_id = f"g{num}"
-
-    reveal_delay = (num - 1) * 0.08
-    pulse_offset = -((num * 0.21) % 4)
-    is_now = project == NOW_PROJECT
-
-    now_marker = ""
-    if is_now:
-        now_marker = f'''
-    <g transform="translate(118, 14)">
-      <circle class="now" r="4" fill="{accent}"/>
-      <circle class="ripple" r="4" fill="{accent}" opacity="0.5"/>
-    </g>'''
-
+    name = escape(DISPLAY_NAMES.get(project, project))
     label = disc_label(disc)
-    disc_x = 106 if is_now else 120
-    disc_tag = f'<text x="{disc_x}" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="{label_ink}" text-anchor="end">{label}</text>'
-
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" viewBox="0 0 130 130" role="img" aria-label="{num:02d} {symbol} {lang} {project} {label}">
-  <defs>
+    repo = SOURCES["repositories"].get(project)
+    if repo:
+        art = embedded_logo(LOGOS / repo["file"])
+        mark = f'<image x="39" y="31" width="52" height="52" href="{art}" aria-hidden="true"/>'
+    else:
+        mark = f'<text x="65" y="72" font-family="{FONT}" font-size="32" fill="{n["fg"]}" text-anchor="middle">{escape(symbol)}</text>'
+    tech = SOURCES["technologies"].get(lang)
+    if tech:
+        colour = n["fg"] if tech["hex"] == "000000" else "#" + tech["hex"]
+        art = embedded_logo(LOGOS / tech["file"], colour)
+        start = (130 - (22 + len(lang) * 5.5)) / 2
+        technology = f'<image x="{start:.1f}" y="109" width="16" height="16" href="{art}" aria-hidden="true"/><text x="{start + 22:.1f}" y="121" font-family="{FONT}" font-size="11" fill="{n["muted"]}">{escape(lang)}</text>'
+    else:
+        technology = f'<text x="65" y="121" font-family="{FONT}" font-size="11" fill="{n["muted"]}" text-anchor="middle">{escape(lang)}</text>'
+    return f'''<svg xmlns="{SVG}" width="130" height="130" viewBox="0 0 130 130" role="img" aria-label="{name}, {escape(lang)}, {label}">
 {MOTION_CSS}
-    <linearGradient id="{grad_id}" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"  stop-color="{accent}" stop-opacity="{tint_opacity_top}"/>
-      <stop offset="60%" stop-color="{accent}" stop-opacity="0"/>
-    </linearGradient>
-  </defs>
-  <g class="cell" style="animation-delay: {reveal_delay:.2f}s">
-    <rect x="0.5" y="0.5" width="129" height="129" rx="4" fill="{cardbg}" stroke="{border}" stroke-width="1"/>
-    <rect x="0.5" y="0.5" width="129" height="129" rx="4" fill="url(#{grad_id})"/>
-    <rect class="pulse" style="animation-delay: {pulse_offset:.2f}s" x="0.5" y="0.5" width="129" height="3" rx="1.5" fill="{accent}"/>
-    <text x="10" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="500" fill="{label_ink}">{num:02d}</text>{disc_tag}{now_marker}
-    <text x="65" y="76" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="50" font-weight="700" fill="{fg}" text-anchor="middle" letter-spacing="-1">{symbol}</text>
-    <text x="65" y="101" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="{muted}" text-anchor="middle">{lang}</text>
-    <text x="65" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="{faded}" text-anchor="middle">{project}</text>
+  <g class="cell">
+    <rect x="0.5" y="0.5" width="129" height="129" rx="2" fill="none" stroke="{n["border"]}" stroke-width="1"/>
+    {category_image(theme, disc)}
+    {mark}
+    <text x="65" y="100" font-family="{FONT}" font-size="12" font-weight="500" fill="{n["fg"]}" text-anchor="middle">{name}</text>
+    {technology}
   </g>
 </svg>
 '''
@@ -168,116 +169,47 @@ def unified_svg(theme):
     """Single SVG containing the whole periodic table — visual centerpiece.
     Click-through per cell isn't possible when img-served; flat link list below
     the SVG in the README provides navigation."""
-    is_dark = theme == "dark"
     n = NEUTRAL[theme]
-    fg = n["fg"]
     muted = n["muted"]
     faded = n["faded"]
-    border = n["border"]
-    cell_text_muted = n["muted"]
-    cell_text_faded = n["faded"]
     chrome_rule = n["rule"]
 
-    W, H = 1200, 885
-    MARGIN_L, MARGIN_TOP = 52, 130
+    W, H = 1200, 768
+    MARGIN_L, MARGIN_TOP = 52, 82
     CELL_W, CELL_H = 130, 130
     COL_STRIDE, ROW_STRIDE = 139, 145
 
     by_pos = {(p, s): (num, symbol, lang, project, disc) for p, s, num, symbol, lang, project, disc in CELLS}
 
+    summary = f"{len(CELLS)} projects | {len({c[4] for c in CELLS})} technologies | {len({c[6] for c in CELLS})} tracks"
     out = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Periodic table of self — 20 projects, 10 languages, 8 disciplines">'
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="The Elements: {summary}">',
+        MOTION_CSS,
+        f'  <text x="52" y="28" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="{faded}">{summary}</text>',
+        f'  <line x1="52" y1="54" x2="{W - 47}" y2="54" stroke="{chrome_rule}" stroke-width="1"/>',
     ]
-
-    # Defs: per-discipline cell gradients only (no canvas bg — blends into page)
-    out.append(MOTION_CSS)
-    out.append("  <defs>")
-    for code in TRACK:
-        accent = disc_accent(code, theme)
-        tint_opacity = 0.45 if is_dark else 0.35
-        out.append(
-            f'    <linearGradient id="grad-{code}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="{accent}" stop-opacity="{tint_opacity}"/><stop offset="60%" stop-color="{accent}" stop-opacity="0"/></linearGradient>'
-        )
-    out.append("  </defs>")
-
-    # Header
-    out.append(
-        f'  <text x="52" y="52" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" fill="{muted}" letter-spacing="3">BUILDER106  //  THE ELEMENTS</text>'
-    )
-    out.append(
-        f'  <text x="52" y="82" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="14" fill="{faded}">20 projects  ·  10 languages  ·  8 disciplines  ·  arranged by language &amp; track</text>'
-    )
-    out.append(f'  <line x1="52" y1="102" x2="{W - 47}" y2="102" stroke="{chrome_rule}" stroke-width="1"/>')
 
     # Group labels (1..8 across the top of cell columns)
     for g in range(8):
         cx = MARGIN_L + g * COL_STRIDE + CELL_W // 2
         out.append(
-            f'    <text x="{cx}" y="122" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="{muted}" text-anchor="middle">{g + 1}</text>'
+            f'    <text x="{cx}" y="74" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="500" fill="{muted}" text-anchor="middle">{g + 1}</text>'
         )
 
     # Period labels (1..4 down the left side)
     for p in range(4):
         cy = MARGIN_TOP + p * ROW_STRIDE + CELL_H // 2 + 5
         out.append(
-            f'    <text x="36" y="{cy}" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500" fill="{muted}" text-anchor="end">{p + 1}</text>'
+            f'    <text x="36" y="{cy}" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="500" fill="{muted}" text-anchor="end">{p + 1}</text>'
         )
 
-    # Cells
+    # Reuse the same artwork and layout for standalone and combined tiles.
     for (p, s), (num, symbol, lang, project, disc) in sorted(by_pos.items()):
-        accent = disc_accent(disc, theme)
-        label_ink = disc_text(disc, theme)
-        cardbg = disc_tint(disc, theme)
-        x = MARGIN_L + s * COL_STRIDE
-        y = MARGIN_TOP + p * ROW_STRIDE
-        reveal_delay = (num - 1) * 0.25
-        pulse_offset = -((num * 0.21) % 4)
-        # Brightness wave: each cell phase-shifted by atomic number, 5s cycle
-        wave_offset = -(((num - 1) * 0.25) % 5)
-        # Discipline spotlight: 8 disciplines × 2s slot in a 16s cycle
-        slot_map = {"Q": 0, "L": 1, "Y": 2, "A": 3, "W": 4, "H": 5, "M": 6, "T": 7}
-        slot = slot_map[disc]
-        is_now = project == NOW_PROJECT
-
-        out.append(f'  <g class="cell" style="animation-delay: {reveal_delay:.2f}s" transform="translate({x}, {y})">')
-        # Spotlight halo — sits behind the card, glows during this discipline's slot
-        out.append(
-            f'    <rect class="halo" style="animation-delay: {slot * 2}s" x="-4" y="-4" width="138" height="138" rx="8" fill="{accent}"/>'
-        )
-        # Card
-        out.append(
-            f'    <rect x="0.5" y="0.5" width="129" height="129" rx="4" fill="{cardbg}" stroke="{border}" stroke-width="1"/>'
-        )
-        # Gradient overlay with brightness wave
-        out.append(
-            f'    <rect class="wave" style="animation-delay: {wave_offset:.2f}s" x="0.5" y="0.5" width="129" height="129" rx="4" fill="url(#grad-{disc})"/>'
-        )
-        label = disc_label(disc)
-        disc_x = 106 if is_now else 120
-        out.append(
-            f'    <rect class="pulse" style="animation-delay: {pulse_offset:.2f}s" x="0.5" y="0.5" width="129" height="3" rx="1.5" fill="{accent}"/>'
-        )
-        out.append(
-            f'    <text x="10" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="500" fill="{label_ink}">{num:02d}</text>'
-        )
-        out.append(
-            f'    <text x="{disc_x}" y="22" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10" font-weight="600" fill="{label_ink}" text-anchor="end">{label}</text>'
-        )
-        if is_now:
-            out.append('    <g transform="translate(118, 14)">')
-            out.append(f'      <circle class="now" r="4" fill="{accent}"/>')
-            out.append(f'      <circle class="ripple" r="4" fill="{accent}" opacity="0.5"/>')
-            out.append("    </g>")
-        out.append(
-            f'    <text x="65" y="76" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="50" font-weight="700" fill="{fg}" text-anchor="middle" letter-spacing="-1">{symbol}</text>'
-        )
-        out.append(
-            f'    <text x="65" y="101" font-family="-apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="{cell_text_muted}" text-anchor="middle">{lang}</text>'
-        )
-        out.append(
-            f'    <text x="65" y="120" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" fill="{cell_text_faded}" text-anchor="middle">{project}</text>'
-        )
-        out.append("  </g>")
+        tile = ET.fromstring(cell_svg(theme, num, symbol, lang, project, disc))
+        group = tile.find(f"{{{SVG}}}g")
+        group.set("transform", f"translate({MARGIN_L + s * COL_STRIDE}, {MARGIN_TOP + p * ROW_STRIDE})")
+        group.set("aria-label", tile.get("aria-label"))
+        out.append(ET.tostring(group, encoding="unicode"))
 
     # Legend area
     legend_y = MARGIN_TOP + 4 * ROW_STRIDE + 12
@@ -285,61 +217,18 @@ def unified_svg(theme):
         f'  <line x1="52" y1="{legend_y}" x2="{W - 47}" y2="{legend_y}" stroke="{chrome_rule}" stroke-width="1"/>'
     )
     out.append(
-        f'  <text x="52" y="{legend_y + 30}" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="{muted}" letter-spacing="2">GROUPS</text>'
+        f'  <text x="52" y="{legend_y + 28}" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="{muted}">Tracks</text>'
     )
 
-    chip_x, chip_y = 65, legend_y + 14
-    order = ["Q", "L", "Y", "A", "W", "H", "M", "T"]
+    chip_x, chip_y = 52, legend_y + 42
+    order = [code for code in TRACK if code in {c[6] for c in CELLS}]
     for code in order:
         name = disc_label(code)
-        accent = disc_accent(code, theme)
-        chip_bg = disc_tint(code, theme)
         out.append(f'  <g transform="translate({chip_x}, {chip_y})">')
-        out.append(
-            f'    <rect x="0" y="0" width="120" height="26" rx="3" fill="{chip_bg}" stroke="{border}" stroke-width="1"/>'
-        )
-        out.append(f'    <rect x="0" y="0" width="120" height="3" rx="1.5" fill="{accent}"/>')
-        out.append(
-            f'    <text x="60" y="17" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="{muted}" text-anchor="middle">{name}</text>'
-        )
+        out.append(category_image(theme, code, 0, 4))
+        out.append(f'    <text x="25" y="17" font-family="{FONT}" font-size="12" fill="{muted}">{name}</text>')
         out.append("  </g>")
         chip_x += 132
-
-    sym_y = legend_y + 80
-    out.append(
-        f'  <text x="52" y="{sym_y + 24}" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" fill="{muted}" letter-spacing="2">SYMBOLS</text>'
-    )
-    syms_rows = [
-        [
-            ("Oc", "OCaml"),
-            ("Rs", "Rust"),
-            ("C", "C99"),
-            ("Py", "Python"),
-            ("R", "R"),
-            ("Rb", "Ruby"),
-        ],
-        [
-            ("Ts", "TypeScript"),
-            ("Sv", "Svelte"),
-            ("Sw", "Swift"),
-            ("Go", "Go"),
-            ("Kt", "Kotlin"),
-        ],
-    ]
-    sym_chip_bg = n["surface"]
-    for r_idx, row in enumerate(syms_rows):
-        cx = 65 if r_idx == 0 else 150
-        cy = sym_y + r_idx * 36
-        for sym, name in row:
-            out.append(f'  <g transform="translate({cx}, {cy})">')
-            out.append(
-                f'    <rect x="0" y="0" width="160" height="30" rx="4" fill="{sym_chip_bg}" stroke="{border}" stroke-width="1"/>'
-            )
-            out.append(
-                f'    <text x="80" y="20" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" text-anchor="middle"><tspan font-weight="700" font-size="14" fill="{fg}">{sym}</tspan> &#160;<tspan fill="{muted}">{name}</tspan></text>'
-            )
-            out.append("  </g>")
-            cx += 175
 
     out.append("</svg>")
     return "\n".join(out)

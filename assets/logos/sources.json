@@ -1,0 +1,280 @@
+{
+  "technology_revision": "b590c7acdbaa23fd7b4eb6749d414725e590f365",
+  "technologies": {
+    "OCaml": {
+      "file": "technologies/ocaml.svg",
+      "hex": "EC6813",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/ocaml.svg",
+      "brand_source": "https://ocaml.org/logo",
+      "sha256": "e973034bce8a78e914959696254bc9f55ab28fd3eba72f856bce87a1bd21e0d4"
+    },
+    "Rust": {
+      "file": "technologies/rust.svg",
+      "hex": "000000",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/rust.svg",
+      "brand_source": "https://www.rust-lang.org",
+      "sha256": "95a291d8887610d103704adcc5c5f2cbfa4c80a96f8e72b00531d5691beb67a8"
+    },
+    "Python": {
+      "file": "technologies/python.svg",
+      "hex": "3776AB",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/python.svg",
+      "brand_source": "https://www.python.org/community/logos/",
+      "sha256": "ad9468e1c4903f73ae7eebfbe980f0f727a10db695be3d914e7d8bd25356a862"
+    },
+    "React": {
+      "file": "technologies/react.svg",
+      "hex": "61DAFB",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/react.svg",
+      "brand_source": "https://github.com/facebook/create-react-app/blob/282c03f9525fdf8061ffa1ec50dce89296d916bd/test/fixtures/relative-paths/src/logo.svg",
+      "sha256": "ab9136a1a4a8be72ac6743e1bdd1912d878bd68d57787ea7a6c6838e3b23c01c"
+    },
+    "R": {
+      "file": "technologies/r.svg",
+      "hex": "276DC3",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/r.svg",
+      "brand_source": "https://www.r-project.org/logo/",
+      "sha256": "3f2e47349d136c4a75cf081318b72c08ecf816c70c99d08a694a43ed5e10bf81"
+    },
+    "Ruby": {
+      "file": "technologies/ruby.svg",
+      "hex": "CC342D",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/ruby.svg",
+      "brand_source": "https://www.ruby-lang.org/en/about/logo/",
+      "sha256": "956992a81b988b916efdd6f7a78b9f19fe352b5c04f2019af2ce1a89e390ac9d"
+    },
+    "Vue": {
+      "file": "technologies/vuedotjs.svg",
+      "hex": "4FC08D",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/vuedotjs.svg",
+      "brand_source": "https://github.com/vuejs/art/blob/a1c78b74569b70a25300925b4eacfefcc143b8f6/logo.svg",
+      "sha256": "2a57b59bd3ff2880f971f7f6cce2378d20bdfb1a54150a0a7ca9fd2fe1bfa781"
+    },
+    "TypeScript": {
+      "file": "technologies/typescript.svg",
+      "hex": "3178C6",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/typescript.svg",
+      "brand_source": "https://www.typescriptlang.org/branding",
+      "sha256": "7f023e8d1e767370306ec9437d2de5d5af97491d6208dd7799a3808a7c10a36a"
+    },
+    "Svelte": {
+      "file": "technologies/svelte.svg",
+      "hex": "FF3E00",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/svelte.svg",
+      "brand_source": "https://github.com/sveltejs/branding/blob/c4dfca6743572087a6aef0e109ffe3d95596e86a/svelte-logo.svg",
+      "sha256": "a38cef0f4fc36bc63519ce34d24a91022f19ec6998ea402c5e155c7479a46f4c"
+    },
+    "Swift": {
+      "file": "technologies/swift.svg",
+      "hex": "F05138",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/swift.svg",
+      "brand_source": "https://developer.apple.com/swift/resources/",
+      "sha256": "b3d5f49cc459b7a3417db134ec70052c30305c3799d0f854796544c52c18a4bc"
+    },
+    "Go": {
+      "file": "technologies/go.svg",
+      "hex": "00ADD8",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/go.svg",
+      "brand_source": "https://blog.golang.org/go-brand",
+      "sha256": "36a745fe15584bf138d02ae6abcbdd155bc1cd4f4976634ad34861b2059db559"
+    },
+    "Next.js": {
+      "file": "technologies/nextdotjs.svg",
+      "hex": "000000",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/nextdotjs.svg",
+      "brand_source": "https://vercel.com/design/brands#next-js",
+      "sha256": "593e14da3ddb65be4c8fa6a178f2f48a01a8bd39ea384f679cd7182b520da502"
+    },
+    "Kotlin": {
+      "file": "technologies/kotlin.svg",
+      "hex": "7F52FF",
+      "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/b590c7acdbaa23fd7b4eb6749d414725e590f365/icons/kotlin.svg",
+      "brand_source": "https://www.jetbrains.com/company/brand/logos/",
+      "sha256": "909d1ba63b4bea5843be4579fa68a398c310c3d4748e8e6ba9ea295403984b3b"
+    }
+  },
+  "repositories": {
+    "ocaml_limit": {
+      "file": "repositories/ocaml_limit.svg",
+      "source_path": "front/favicon.svg",
+      "source_repository": "https://github.com/Builder106/ocaml-limit.git",
+      "source_revision": "d89385066e79d4b6128b6c64f7728d74299d7f1e",
+      "sha256": "c501c61e7f336db633107de8f55461997cdb3a817a4412cde044f0baba99df14"
+    },
+    "ClearHash": {
+      "file": "repositories/ClearHash.svg",
+      "source_path": "assets/favicon.svg",
+      "source_repository": "https://github.com/Builder106/clear-hash.git",
+      "source_revision": "f6114eafc0a2f965b6cb7ee38b8d57b1ed09a90a",
+      "sha256": "6711a6ba6fd09379ceca46f25146ab55b2ac32d3cb9ee0e264bdfcf43359a2aa"
+    },
+    "CapitolAlpha": {
+      "file": "repositories/CapitolAlpha.svg",
+      "source_path": "site/favicon.svg",
+      "source_repository": "https://github.com/Builder106/capitol-alpha.git",
+      "source_revision": "28e0c1fcfcde2bfeb1b100d200aa59937d9f6208",
+      "sha256": "8d6ff39dbd035baab32d3c506adbe6b6fcaddbe7219087b21c4d36197a7cc48d"
+    },
+    "MedCore": {
+      "file": "repositories/MedCore.svg",
+      "source_path": "public/favicon.svg",
+      "source_repository": "https://github.com/Builder106/med-core.git",
+      "source_revision": "a29c99e46a588df6dd4230f4dfaeede60374adef",
+      "sha256": "77a44c317ac62cdd9f66666774bba936075ec23b987349c942653b6925da8c2d"
+    },
+    "qforge": {
+      "file": "repositories/qforge.svg",
+      "source_path": "web/favicon.svg",
+      "source_repository": "https://github.com/Builder106/qforge.git",
+      "source_revision": "3f8bc9d02858eeb609cfcc44c5e2b81a7fb02d90",
+      "sha256": "7a1dfc118f9054bc57de3250cbf39b2134e0583809d633b0d0712a93fa620654"
+    },
+    "EconOS": {
+      "file": "repositories/EconOS.svg",
+      "source_path": "dashboard/favicon.svg",
+      "source_repository": "https://github.com/Builder106/econ-os.git",
+      "source_revision": "9e5a271574fee590048d69c2ffecfc880c74672e",
+      "sha256": "62ec1039af06e9eaaf1a92f29d27b28ed6a53b07d75dd41c3fcead1c17a9d831"
+    },
+    "datafest-2026": {
+      "file": "repositories/datafest-2026.svg",
+      "source_path": "docs/favicon.svg",
+      "source_repository": "https://github.com/Builder106/datafest-2026.git",
+      "source_revision": "5b50cf232c90535e54cf5e2105cf3f385398c4e0",
+      "sha256": "fb2c6cb0ebf4016286ee36df38d7495c5bd114fadb3c28fc9429d23f038cc1e6"
+    },
+    "LinuxBenchHub": {
+      "file": "repositories/LinuxBenchHub.svg",
+      "source_path": "assets/favicon.svg",
+      "source_repository": "https://github.com/Builder106/linux-bench-hub.git",
+      "source_revision": "147983b21f28cd9c229cf05e2ab607d426cd73e5",
+      "sha256": "3ba01d167a2e7127d1110e2d6d272b2c435cca0accd0bf4b23995f6bf886eed2"
+    },
+    "StudySprint": {
+      "file": "repositories/StudySprint.svg",
+      "source_path": "frontend/public/logo.svg",
+      "source_repository": "https://github.com/Builder106/study-sprint.git",
+      "source_revision": "931d1666acec71e46b821fc2d81c230671dd981b",
+      "sha256": "aad5b49bc890a4d5bb6adb7b29faf950496c82d03b57fa99c3e22dcd5bafde2a"
+    },
+    "halberd": {
+      "file": "repositories/halberd.svg",
+      "source_path": "assets/favicon.svg",
+      "source_repository": "https://github.com/Builder106/halberd.git",
+      "source_revision": "d99c510fd2e22aefc66d42b7da7e54b181c2c61d",
+      "sha256": "fcab2721d3fd4c4df1270bc691a23b4fb64d05300278c3bf7a848004a246cc11"
+    },
+    "quarry": {
+      "file": "repositories/quarry.svg",
+      "source_path": "site/app/icon.svg",
+      "source_repository": "https://github.com/Builder106/quarry.git",
+      "source_revision": "8cad8737336be661b3d82ae62ac78cfd03519e7c",
+      "sha256": "b601dc62e27f3f751b23605f28f97906f5bb0c07af751427a5324492c7d4c1a5"
+    },
+    "IMC_Prosperity": {
+      "file": "repositories/IMC_Prosperity.svg",
+      "source_path": "assets/logo.svg",
+      "source_repository": "https://github.com/Builder106/imc-prosperity.git",
+      "source_revision": "b87a6176d3ece4242a1af6845db00f1c381e3fca",
+      "sha256": "ae805ddaeea03317d999f28f556230aed43698fcf099270a2351b9c429a71816"
+    },
+    "MetaHelper": {
+      "file": "repositories/MetaHelper.svg",
+      "source_path": "assets/logo.svg",
+      "source_repository": "https://github.com/Builder106/meta-helper.git",
+      "source_revision": "62582f67245cec12a3291b8c3801032a8748d19b",
+      "sha256": "238ac57136e151b2f229539aa41c891ed2e3f813832aba73896a18bfac0f2c1d"
+    },
+    "ascii_arcade": {
+      "file": "repositories/ascii_arcade.svg",
+      "source_path": "assets/logo.svg",
+      "source_repository": "https://github.com/Builder106/ascii-arcade.git",
+      "source_revision": "08bbeb5d20bb1e6124eec558f3c8afbbd6c85cee",
+      "sha256": "1fd7afd5394a523d58cd77620b683e60b7626b246d3c45dbf171019fa3dee99d"
+    },
+    "portfolio": {
+      "file": "repositories/portfolio.svg",
+      "source_path": "public/favicon.svg",
+      "source_repository": "https://github.com/Builder106/builder106.github.io.git",
+      "source_revision": "7fb8fce899b568b2eb0edbf7682ce64eaa58cc42",
+      "sha256": "fc24140c11801475dd743ef177c3e7c1a3eda7c9a72334beac98d1fe3b9d9bc9"
+    },
+    "celestial_sanctum": {
+      "file": "repositories/celestial_sanctum.png",
+      "source_path": "icons/icon-128.webp",
+      "source_repository": "https://github.com/Builder106/celestial-sanctum.git",
+      "source_revision": "8818f3d73c49e150e4ce6d020503d00ec932bc3e",
+      "sha256": "224c8960201f1179aef8931f7a470b5f24d3a9de27f9856a411ffc174fb156d7"
+    },
+    "STAIJA": {
+      "file": "repositories/STAIJA.webp",
+      "source_path": "public/img/projects/logos/staija.webp",
+      "source_repository": "https://github.com/Builder106/builder106.github.io.git",
+      "source_revision": "7fb8fce899b568b2eb0edbf7682ce64eaa58cc42",
+      "sha256": "c8ce041dcb9310b9d8d115bc0b1e68d7e59ceb3276570ce4daa4440ee104e5b9"
+    },
+    "MicroMatch": {
+      "file": "repositories/MicroMatch.webp",
+      "source_path": "public/img/projects/logos/micromatch.webp",
+      "source_repository": "https://github.com/Builder106/builder106.github.io.git",
+      "source_revision": "7fb8fce899b568b2eb0edbf7682ce64eaa58cc42",
+      "sha256": "9cb9fe029ca7507bcbe802cf906ae219290080e11c0e51c629941c1f7a2ea87f"
+    },
+    "enclave": {
+      "file": "repositories/enclave.webp",
+      "source_path": "public/img/projects/logos/enclave.webp",
+      "source_repository": "https://github.com/Builder106/builder106.github.io.git",
+      "source_revision": "7fb8fce899b568b2eb0edbf7682ce64eaa58cc42",
+      "sha256": "d89bdf3a307b740beefedee97ea848ea79132adffb14833c9dec17cb3df10167"
+    },
+    "helm": {
+      "file": "repositories/helm.webp",
+      "source_path": "public/img/projects/logos/helm.webp",
+      "source_repository": "https://github.com/Builder106/builder106.github.io.git",
+      "source_revision": "7fb8fce899b568b2eb0edbf7682ce64eaa58cc42",
+      "sha256": "cefed641cfb9f1a0b56e7dfa00f3675c232c622be44aaf6884cbb8b2f1f8ae2d"
+    }
+  },
+  "categories": {
+    "Q": {
+      "file": "categories/chart-no-axes-combined.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/chart-no-axes-combined.svg",
+      "sha256": "2f8a708c357488cfde7428d9b055b9bb4a99c08dc71e9296da03ecc19291c4ab"
+    },
+    "Y": {
+      "file": "categories/shield-check.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/shield-check.svg",
+      "sha256": "8d4fcdbde5bba4abb1a2f6fe53e37ceb6343a1d5449a9d88f6f97c1971d26c4e"
+    },
+    "A": {
+      "file": "categories/chart-column.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/chart-column.svg",
+      "sha256": "80664a4c5ca1bca10bcb88c1a99f62593c94d61d72d3a4bbf577eb3f3ea4da57"
+    },
+    "H": {
+      "file": "categories/cross.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/cross.svg",
+      "sha256": "f32e30cceae4ade5ae08b2f3f63ffa79dc6c5eccbb1286be41fbec9afa9fe3d5"
+    },
+    "L": {
+      "file": "categories/brain-circuit.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/brain-circuit.svg",
+      "sha256": "a338cb589935721dc00da71ea7d7457ab7fbb85cff90a62cc3ac6b2ebc68cd82"
+    },
+    "W": {
+      "file": "categories/code-xml.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/code-xml.svg",
+      "sha256": "a6d2110227be375be21da7324d3c09262c1bf019d06bdeab356d515342ab7cce"
+    },
+    "M": {
+      "file": "categories/smartphone.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/smartphone.svg",
+      "sha256": "f9fdb700b50feb5fc6436f53eb9813e9eb56a9071ac4cdcba69c7f7c1c13877d"
+    },
+    "T": {
+      "file": "categories/wrench.svg",
+      "source": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/wrench.svg",
+      "sha256": "b5f3bf792743edb9e81b543dd1b13ccc26d3afe1d33500a1cd8dee2e052d6197"
+    }
+  }
+}

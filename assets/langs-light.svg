@@ -1,21 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="495" height="195" viewBox="0 0 495 195" role="img" aria-label="Most-used programming languages breakdown">
   <defs>
   <style>
-    .cell   { animation: reveal 0.55s both; }
-    .halo   { opacity: 0; animation: spotlight 16s linear infinite; }
-    .wave   { animation: wave 5s linear infinite; }
-    .pulse  { animation: pulse 4s ease-in-out infinite; }
-    .now    { animation: pulse 1.6s ease-in-out infinite; }
-    .ripple { transform-origin: center; animation: ripple 1.6s linear infinite; }
-    @keyframes reveal    { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes spotlight { 0% { opacity: 0; } 4%, 10% { opacity: 0.55; } 14%, 100% { opacity: 0; } }
-    @keyframes wave      { 0% { opacity: 0.4; } 10%, 20% { opacity: 1; } 30%, 100% { opacity: 0.4; } }
-    @keyframes pulse     { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    @keyframes ripple    { from { transform: scale(1); opacity: 0.5; } to { transform: scale(2.25); opacity: 0; } }
+    .cell { animation: reveal 0.55s ease-out both; }
+    @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) {
-      .cell, .halo, .wave, .pulse, .now, .ripple { animation: none; }
-      .cell, .wave, .pulse, .now { opacity: 1; }
-      .halo, .ripple { opacity: 0; }
+      .cell { animation: none; opacity: 1; }
     }
   </style>
   </defs>

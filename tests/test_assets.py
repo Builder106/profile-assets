@@ -198,10 +198,16 @@ def test_build_main_success_and_failure(monkeypatch, tmp_path, capsys):
 def test_unified_generation_and_write_unified(cells, tmp_path, monkeypatch):
     for theme in ("dark", "light"):
         svg = cells.unified_svg(theme)
+        ET.fromstring(svg)
         assert svg.startswith("<svg")
-        assert "BUILDER106" in svg
-        assert "SYMBOLS" in svg
-        assert 'class="now"' in svg
+        assert "20 projects | 14 technologies | 8 tracks" in svg
+        assert ">Tracks</text>" in svg
+        assert "BUILDER106" not in svg
+        assert "SYMBOLS" not in svg
+        assert "linearGradient" not in svg
+        assert "infinite" not in svg
+        assert "<circle" not in svg
+        assert "ripple" not in svg
 
     cells.write_unified()
 
