@@ -21,53 +21,19 @@ PALETTE = json.loads((Path(__file__).parent / "palette.json").read_text())
 NEUTRAL = PALETTE["neutral"]
 TRACK = PALETTE["tracks"]
 
-# (period, slot, num, symbol, lang, project_id, discipline_code)
-CELLS = [
-    (0, 0, 1, "Oc", "OCaml", "ocaml_limit", "Q"),
-    (0, 7, 2, "C", "C99", "qforge", "Q"),
-    (1, 0, 3, "Rs", "Rust", "ClearHash", "Y"),
-    (1, 1, 4, "Py", "Python", "CapitolAlpha", "A"),
-    (1, 6, 5, "R", "R", "datafest-2026", "A"),
-    (1, 7, 6, "Py", "Python", "EconOS", "Q"),
-    (2, 0, 7, "Rb", "Ruby", "LinuxBenchHub", "A"),
-    (2, 1, 8, "Ts", "TypeScript", "STAIJA", "W"),
-    (2, 2, 9, "Ts", "TypeScript", "StudySprint", "W"),
-    (2, 3, 10, "Sv", "Svelte", "MicroMatch", "W"),
-    (2, 4, 11, "Ts", "TypeScript", "MedCore", "H"),
-    (2, 5, 12, "Ts", "TypeScript", "portfolio", "W"),
-    (2, 6, 13, "Py", "Python", "IMC_Prosperity", "L"),
-    (2, 7, 14, "Sw", "Swift", "celestial_sanctum", "M"),
-    (3, 0, 15, "Go", "Go", "halberd", "Y"),
-    (3, 1, 16, "Ts", "TypeScript", "quarry", "Y"),
-    (3, 2, 17, "Ts", "TypeScript", "enclave", "L"),
-    (3, 3, 18, "Ts", "TypeScript", "helm", "L"),
-    (3, 4, 19, "Kt", "Kotlin", "MetaHelper", "M"),
-    (3, 5, 20, "Rs", "Rust", "ascii_arcade", "T"),
-]
+PROJECTS_DATA = json.loads((Path(__file__).parent / "projects.json").read_text())
+NOW_PROJECT = PROJECTS_DATA.get("now_project", "halberd")
 
-REPO_NAME = {  # project_id -> actual repo name (slug)
-    "ocaml_limit": "ocaml-limit",
-    "ClearHash": "clear-hash",
-    "CapitolAlpha": "capitol-alpha",
-    "EconOS": "econ-os",
-    "LinuxBenchHub": "linux-bench-hub",
-    "STAIJA": "staija",
-    "StudySprint": "study-sprint",
-    "MicroMatch": "micro-match",
-    "MedCore": "med-core",
-    "portfolio": "builder106.github.io",
-    "IMC_Prosperity": "imc-prosperity",
-    "celestial_sanctum": "celestial-sanctum",
-    "halberd": "halberd",
-    "quarry": "quarry",
-    "enclave": "enclave",
-    "helm": "helm",
-    "MetaHelper": "meta-helper",
-    "ascii_arcade": "ascii-arcade",
-}
+# Dynamically construct CELLS and REPO_NAME from projects.json
+CELLS = []
+REPO_NAME = {}
+for p in PROJECTS_DATA["projects"]:
+    REPO_NAME[p["id"]] = p["repo"]
+    if "periodic" in p:
+        per = p["periodic"]
+        CELLS.append((per["period"], per["slot"], per["num"], per["symbol"], p["lang"], p["id"], p["track"]))
 
-# Currently-active project: gets a "NOW" indicator
-NOW_PROJECT = "MicroMatch"
+CELLS.sort(key=lambda c: (c[0], c[1]))
 
 
 def disc_label(code):
