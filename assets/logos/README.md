@@ -14,4 +14,6 @@ Run `python assets/build.py` to regenerate the full table and standalone cells. 
 
 On 2026-10-10, the logo layout replaced the symbol-only table. Transparent interiors replaced the rejected tinted and off-white surfaces. Celestial Sanctum's technology label was corrected from Swift to TypeScript after checking its Angular source and project journal.
 
-On 2026-10-10, a second refinement removed the numeric axes, increased project names to 14 px with medium weight, and gave technology labels more breathing room in 130 by 148 px tiles. The empty center now contains a short introduction and the project counts. Individual logo viewports and display sizes balance the visible marks without redrawing them.
+On 2026-10-10, a second refinement removed the numeric axes, increased project names to 14 px with medium weight, and gave technology labels more breathing room in 130 by 148 px tiles. Individual logo viewports and display sizes balance the visible marks without redrawing them.
+
+On 2026-10-10, the central introduction and visible project counts were removed at the user's request. The counts remain in the image description.

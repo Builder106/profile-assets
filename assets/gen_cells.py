@@ -181,7 +181,6 @@ def unified_svg(theme):
     the SVG in the README provides navigation."""
     n = NEUTRAL[theme]
     muted = n["muted"]
-    faded = n["faded"]
     chrome_rule = n["rule"]
 
     W, H = 1152, 768
@@ -194,9 +193,6 @@ def unified_svg(theme):
     out = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="The Elements: {summary}">',
         MOTION_CSS,
-        f'  <text x="320" y="120" font-family="{FONT}" font-size="34" font-weight="600" fill="{n["fg"]}">Software, data,</text>',
-        f'  <text x="320" y="161" font-family="{FONT}" font-size="34" font-weight="600" fill="{n["fg"]}">and systems.</text>',
-        f'  <text x="320" y="196" font-family="{FONT}" font-size="14" fill="{faded}">{summary}</text>',
     ]
 
     # Reuse the same artwork and layout for standalone and combined tiles.

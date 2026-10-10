@@ -6,9 +6,6 @@
       .cell { animation: none; opacity: 1; }
     }
   </style>
-  <text x="320" y="120" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" fill="#e6edf3">Software, data,</text>
-  <text x="320" y="161" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" fill="#e6edf3">and systems.</text>
-  <text x="320" y="196" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#c1c5ca">20 projects | 14 technologies | 8 tracks</text>
 <g xmlns="http://www.w3.org/2000/svg" class="cell" transform="translate(24, 24)" aria-label="OCaml Limit, OCaml, Quant">
     <rect x="0.5" y="0.5" width="129" height="147" rx="2" fill="none" stroke="#7d8590" stroke-width="1" />
     <image x="105" y="10" width="14" height="14" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNkNWQ4ZGIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8cGF0aCBkPSJNMTIgMTZ2NSIgLz4KICA8cGF0aCBkPSJNMTYgMTQuNjM5VjIxIiAvPgogIDxwYXRoIGQ9Ik0yMCAxMC42NTZWMjEiIC8+CiAgPHBhdGggZD0ibTIyIDMtOC42NDYgOC42NDZhLjUuNSAwIDAgMS0uNzA4IDBMOS4zNTQgOC4zNTRhLjUuNSAwIDAgMC0uNzA3IDBMMiAxNSIgLz4KICA8cGF0aCBkPSJNNCAxOC40NjNWMjEiIC8+CiAgPHBhdGggZD0iTTggMTQuNjU2VjIxIiAvPgo8L3N2Zz4=" aria-hidden="true" />
