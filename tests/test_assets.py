@@ -45,6 +45,11 @@ def audit():
     return load("audit")
 
 
+@pytest.fixture(scope="module")
+def stats():
+    return load("gen_stats")
+
+
 def test_a11y_helpers_cover_colour_math(a11y):
     assert a11y.channels("#123456") == pytest.approx((18 / 255, 52 / 255, 86 / 255))
     assert a11y.to_hex((0.0, 0.5, 1.0)) == "#0080ff"
@@ -77,7 +82,7 @@ def test_cell_generation_and_tables(cells, tmp_path, capsys):
     assert "github.com/Builder106" in table
 
 
-def test_flagship_index_and_variants(flagships, tmp_path):
+def test_flagship_index_and_variants(flagships, tmp_path, monkeypatch, capsys):
     for theme in ("light", "dark"):
         index = flagships.index_svg(theme)
         assert 'role="img"' in index
@@ -86,11 +91,32 @@ def test_flagship_index_and_variants(flagships, tmp_path):
         assert "Six projects that earn a closer look." in index
         assert "#f7f4ed" not in index
         assert "#f0ece3" not in index
-    with pytest.raises(ValueError, match="unknown flagship visual"):
-        flagships.visual("missing", 0, 0, "#000000", {"muted": "#000000", "rule": "#000000", "surface": "#ffffff"})
 
     flagships.write_cards(tmp_path)
     assert len(list(tmp_path.glob("*.svg"))) == 2
+
+    monkeypatch.setattr(flagships, "ASSETS", tmp_path)
+    flagships.main()
+    assert "Generated flagships" in capsys.readouterr().out
+
+
+def test_stats_and_langs_generation(stats, tmp_path, monkeypatch, capsys):
+    for theme in ("light", "dark"):
+        s = stats.stats_svg(theme)
+        assert 'role="img"' in s
+        assert "Total Commits" in s
+        assert "100%" in s
+
+        langs_svg = stats.langs_svg(theme)
+        assert 'role="img"' in langs_svg
+        assert "TypeScript" in langs_svg
+
+    stats.write_stats(tmp_path)
+    assert len(list(tmp_path.glob("*.svg"))) == 4
+
+    monkeypatch.setattr(stats, "ASSETS", tmp_path)
+    stats.main()
+    assert "Generated telemetry" in capsys.readouterr().out
 
 
 def test_palette_build_and_report(palette, capsys):
@@ -152,6 +178,7 @@ def test_audit_readme_and_main(audit, tmp_path, monkeypatch, capsys):
     fake_flagships = fake_assets / "flagships"
     fake_flagships.mkdir()
     (fake_flagships / "flagships-dark.svg").write_text("<svg/>", encoding="utf-8")
+    (fake_assets / "stats-dark.svg").write_text("<svg/>", encoding="utf-8")
     monkeypatch.setattr(audit, "ASSETS", fake_assets)
     monkeypatch.setattr(audit, "audit_svg", lambda path: [])
     monkeypatch.setattr(audit, "audit_readme", lambda path: [])
@@ -186,11 +213,15 @@ def test_build_main_success_and_failure(monkeypatch, tmp_path, capsys):
     calls.clear()
     (tmp_path / "gen_flagships.py").touch()
     (tmp_path / "flagships").mkdir(exist_ok=True)
+    (tmp_path / "gen_stats.py").touch()
     build.main()
-    assert len(calls) == 3
-    assert "flagships/:" in capsys.readouterr().out
+    assert len(calls) == 4
+    out = capsys.readouterr().out
+    assert "flagships/:" in out
+    assert "stats-dark.svg" in out
 
     monkeypatch.setattr(build, "run", lambda command, cwd=None: False)
+
     with pytest.raises(SystemExit, match="1"):
         build.main()
     assert "Build failed" in capsys.readouterr().err

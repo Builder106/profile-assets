@@ -48,10 +48,11 @@ def main():
     else:
         print("\n3. Flagship index cleared (skipping)...")
 
-    # 4. Rasterize SVGs to PNGs (optional, requires cairosvg or similar)
-    # For now, skip - PNGs can be generated separately if needed
-    # print("\n4. Rasterizing SVGs to PNGs...")
-    # ok &= run([...])
+    # 4. Generate in-house telemetry and language SVGs
+    stats_script = assets_dir / "gen_stats.py"
+    if stats_script.exists():
+        print("\n4. Generating telemetry and language SVGs...")
+        ok &= run([sys.executable, "gen_stats.py"], cwd=assets_dir)
 
     if ok:
         print("\n✓ Build complete!")
@@ -61,6 +62,8 @@ def main():
         flagships_dir = assets_dir / "flagships"
         if flagships_dir.exists():
             print(f"    flagships/: {len(list(flagships_dir.glob('*.svg')))} SVGs")
+        print("    stats-dark.svg, stats-light.svg, langs-dark.svg, langs-light.svg")
+
     else:
         print("\n✗ Build failed", file=sys.stderr)
         sys.exit(1)
