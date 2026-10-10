@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="148" viewBox="0 0 130 148" role="img" aria-label="datafest-2026, R, Analyst">
+  <style>
+    .cell { animation: reveal 0.55s ease-out both; }
+    @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .cell { animation: none; opacity: 1; }
+    }
+  </style>
+  <g class="cell">
+    <rect x="0.5" y="0.5" width="129" height="147" rx="2" fill="none" stroke="#7d8590" stroke-width="1"/>
+    <image x="105" y="10" width="14" height="14" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNkNWQ4ZGIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8cGF0aCBkPSJNMyAzdjE2YTIgMiAwIDAgMCAyIDJoMTYiIC8+CiAgPHBhdGggZD0iTTE4IDE3VjkiIC8+CiAgPHBhdGggZD0iTTEzIDE3VjUiIC8+CiAgPHBhdGggZD0iTTggMTd2LTMiIC8+Cjwvc3ZnPg==" aria-hidden="true"/>
+    <image class="repo-mark" x="35" y="29" width="60" height="60" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzBjMTUyNSIvPgogIDxwYXRoIGQ9Ik03IDIxIFExNiA3IDI1IDIxIiBzdHJva2U9IiM0ZGQwZTEiIHN0cm9rZS13aWR0aD0iMi42IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSI3IiBjeT0iMjEiIHI9IjIuNiIgZmlsbD0iI2ZmNzY3NiIvPgogIDxjaXJjbGUgY3g9IjI1IiBjeT0iMjEiIHI9IjIuNiIgZmlsbD0iI2ZmNzY3NiIvPgo8L3N2Zz4K" data-role="project" aria-hidden="true"/>
+    <text x="65" y="107" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" fill="#e6edf3" text-anchor="middle">datafest-2026</text>
+    <image x="51.2" y="119" width="16" height="16" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSIjMjc2REMzIj48dGl0bGU+UjwvdGl0bGU+PHBhdGggZD0iTTEyIDIuNzQ2Yy02LjYyNyAwLTEyIDMuNTk5LTEyIDguMDM3IDAgMy44OTcgNC4xNDQgNy4xNDQgOS42NCA3Ljg4VjE2LjI2Yy0yLjkyNC0uOTE1LTQuOTI1LTIuNzU1LTQuOTI1LTQuODc3IDAtMy4wMzUgNC4wODQtNS40OTQgOS4xMi01LjQ5NCA1LjAzOCAwIDguNzU3IDEuNjgzIDguNzU3IDUuNDk0IDAgMS45NzYtLjk5OSAzLjM3OS0yLjY2MiA0LjI3Mi4wOS4wNjYuMTc0LjEyOC4yNTguMjE2LjE2OS4xNDkuMjUuMzYzLjM3Mi41NDQgMi4xMjgtMS40NSAzLjQ0LTMuNDM3IDMuNDQtNS42MzEgMC00LjQ0LTUuMzczLTguMDM4LTEyLTguMDM4em0tMi4xMTEgNC45OXYxMy41MTZsNC4wOTMtLjAwMi0uMDAyLTUuMjkxaDEuMWMuMjI1IDAgLjMyMS4wNjYuNTQ5LjI1LjI3Mi4yMi43MTUuOTgyLjcxNS45ODJsMi4xNjQgNC4wNjMgNC42MjctLjAwMi0yLjg2NC00LjgyNnMtLjA4Ni0uMTkzLS4yNjUtLjM4M2EyLjIyIDIuMjIgMCAwMC0uNTgyLS40MTZjLS40MjItLjIxNC0xLjE0OS0uNDM0LTEuMTQ5LS40MzRzMy41NzgtLjI2NCAzLjU3OC0zLjgyNmMwLTMuNTYyLTMuNzQ0LTMuNjMtMy43NDQtMy42M3ptNC4xMjcgMi45M2wyLjQ3OC4wMDJzMS4xNDktLjA2MiAxLjE0OSAxLjEyN2MwIDEuMTY1LTEuMTQ5IDEuMTctMS4xNDkgMS4xN2gtMi40Nzh6bTEuNzU0IDYuMTE5Yy0uNDk0LjA0OS0xLjAxMi4wNzktMS41NC4wODh2MS44MDdhMTYuNjIyIDE2LjYyMiAwIDAwMi4zNy0uNDczbC0uNDcxLS44OTFzLS4xMDgtLjE4My0uMjQ4LS4zOTRjLS4wMzktLjA1NC0uMDgtLjA5OC0uMTExLS4xMzd6IiAvPjwvc3ZnPg==" aria-hidden="true"/><text x="73.2" y="131" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#c1c5ca">R</text>
+  </g>
+</svg>
