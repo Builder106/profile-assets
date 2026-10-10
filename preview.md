@@ -1,6 +1,8 @@
 # The Elements
 
-Preview of individually linked project cards. Each card opens its repository.
+Each card opens its repository. Expand a project below for its description and links.
+
+[Compare cards that expand directly](expandable-preview.md).
 
 <p>
 <a href="https://github.com/Builder106/ocaml-limit" title="OCaml Limit"><picture><source media="(prefers-color-scheme: dark)" srcset="preview-cards/01-oc-dark.svg"><source media="(prefers-color-scheme: light)" srcset="preview-cards/01-oc-light.svg"><img src="preview-cards/01-oc-light.svg" alt="OCaml Limit | OCaml | Quant" width="160" height="181"></picture></a>
@@ -25,26 +27,210 @@ Preview of individually linked project cards. Each card opens its repository.
 </p>
 
 <details>
-<summary>Project links and demos</summary>
+<summary>OCaml Limit</summary>
 
-- [OCaml Limit](https://github.com/Builder106/ocaml-limit) — OCaml | Quant | [Demo](https://ocaml-lob.vercel.app/)
-- [qforge](https://github.com/Builder106/qforge) — C99 | Quant | [Demo](https://qforge-neural.vercel.app)
-- [ClearHash](https://github.com/Builder106/clear-hash) — Rust | Cybersecurity | [Demo](https://clear-hash.vercel.app)
-- [CapitolAlpha](https://github.com/Builder106/capitol-alpha) — Python | Data analysis | [Demo](https://capitolalpha.vercel.app/)
-- [datafest-2026](https://github.com/Builder106/datafest-2026) — R | Data analysis | [Demo](https://datafest-2026.vercel.app/)
-- [EconOS](https://github.com/Builder106/econ-os) — Python | Quant | [Demo](https://econ-os.vercel.app)
-- [LinuxBenchHub](https://github.com/Builder106/linux-bench-hub) — Ruby | Data analysis | [Demo](https://linuxbenchhub.vercel.app/)
-- [STAIJA](https://github.com/Builder106/staija) — Vue | Software engineering | [Demo](https://staija.org)
-- [StudySprint](https://github.com/Builder106/study-sprint) — TypeScript | Software engineering | [Demo](https://getstudysprint.vercel.app)
-- [MicroMatch](https://github.com/Builder106/micro-match) — Svelte | Software engineering | [Demo](https://trymicromatch.vercel.app)
-- [MedCore](https://github.com/Builder106/med-core) — React | Health technology | [Demo](https://medcore-health.vercel.app)
-- [portfolio](https://github.com/Builder106/builder106.github.io) — TypeScript | Software engineering | [Demo](https://yinkavaughan.me/)
-- [IMC Prosperity](https://github.com/Builder106/imc-prosperity) — Python | AI/ML | [Demo](https://tradetell.streamlit.app)
-- [halberd](https://github.com/Builder106/halberd) — Go | Cybersecurity | [Demo](https://halberd-keep.vercel.app)
-- [quarry](https://github.com/Builder106/quarry) — Yul | Cybersecurity | [Demo](https://quarry-mev.vercel.app)
-- [enclave](https://github.com/Builder106/enclave) — Next.js | AI/ML | [Demo](https://enclave-iota.vercel.app)
-- [helm](https://github.com/Builder106/helm) — TypeScript | AI/ML | [Demo](https://helm-bridge.vercel.app)
-- [MetaHelper](https://github.com/Builder106/meta-helper) — Kotlin | Mobile
-- [ASCII Arcade](https://github.com/Builder106/ascii-arcade) — Rust | Tooling
+Sub-microsecond matching with live financial dashboard.
+
+OCaml | Quant
+
+[Repository](https://github.com/Builder106/ocaml-limit) | [Demo](https://ocaml-lob.vercel.app/)
+
+</details>
+
+<details>
+<summary>qforge</summary>
+
+Neural net in ~2k LoC C99 with zero external dependencies.
+
+C99 | Quant
+
+[Repository](https://github.com/Builder106/qforge) | [Demo](https://qforge-neural.vercel.app)
+
+</details>
+
+<details>
+<summary>ClearHash</summary>
+
+Byte-level security scanner checking source against binaries.
+
+Rust | Cybersecurity
+
+[Repository](https://github.com/Builder106/clear-hash) | [Demo](https://clear-hash.vercel.app)
+
+</details>
+
+<details>
+<summary>CapitolAlpha</summary>
+
+Auditing 16k Congressional stock trades from 2020 to 2024.
+
+Python | Data analysis
+
+[Repository](https://github.com/Builder106/capitol-alpha) | [Demo](https://capitolalpha.vercel.app/)
+
+</details>
+
+<details>
+<summary>datafest-2026</summary>
+
+Transportation and emergency care across 58k hospital patients.
+
+R | Data analysis
+
+[Repository](https://github.com/Builder106/datafest-2026) | [Demo](https://datafest-2026.vercel.app/)
+
+</details>
+
+<details>
+<summary>EconOS</summary>
+
+Multi-agent reinforcement learning decentralized economy.
+
+Python | Quant
+
+[Repository](https://github.com/Builder106/econ-os) | [Demo](https://econ-os.vercel.app)
+
+</details>
+
+<details>
+<summary>LinuxBenchHub</summary>
+
+Automated Linux speed benchmarks on identical virtual hardware.
+
+Ruby | Data analysis
+
+[Repository](https://github.com/Builder106/linux-bench-hub) | [Demo](https://linuxbenchhub.vercel.app/)
+
+</details>
+
+<details>
+<summary>STAIJA</summary>
+
+Mentorship workflow and admissions for Nigeria STEM scholars.
+
+Vue | Software engineering
+
+[Repository](https://github.com/Builder106/staija) | [Demo](https://staija.org)
+
+</details>
+
+<details>
+<summary>StudySprint</summary>
+
+Focus timer tracking study sessions into garden growth.
+
+TypeScript | Software engineering
+
+[Repository](https://github.com/Builder106/study-sprint) | [Demo](https://getstudysprint.vercel.app)
+
+</details>
+
+<details>
+<summary>MicroMatch</summary>
+
+Micro-volunteering marketplace pairing NGOs with volunteers.
+
+Svelte | Software engineering
+
+[Repository](https://github.com/Builder106/micro-match) | [Demo](https://trymicromatch.vercel.app)
+
+</details>
+
+<details>
+<summary>MedCore</summary>
+
+Digital medical records platform designed for African clinics.
+
+React | Health technology
+
+[Repository](https://github.com/Builder106/med-core) | [Demo](https://medcore-health.vercel.app)
+
+</details>
+
+<details>
+<summary>portfolio</summary>
+
+Interactive 3D developer portfolio rendered inside WebGL room.
+
+TypeScript | Software engineering
+
+[Repository](https://github.com/Builder106/builder106.github.io) | [Demo](https://yinkavaughan.me/)
+
+</details>
+
+<details>
+<summary>IMC Prosperity</summary>
+
+Trading competition assistant using RAG over wiki and market data.
+
+Python | AI/ML
+
+[Repository](https://github.com/Builder106/imc-prosperity) | [Demo](https://tradetell.streamlit.app)
+
+</details>
+
+<details>
+<summary>halberd</summary>
+
+JSON-RPC firewall evaluating MCP tool calls against strict policy.
+
+Go | Cybersecurity
+
+[Repository](https://github.com/Builder106/halberd) | [Demo](https://halberd-keep.vercel.app)
+
+</details>
+
+<details>
+<summary>quarry</summary>
+
+Bare-metal MEV arbitrage back-running engine with Yul executor.
+
+Yul | Cybersecurity
+
+[Repository](https://github.com/Builder106/quarry) | [Demo](https://quarry-mev.vercel.app)
+
+</details>
+
+<details>
+<summary>enclave</summary>
+
+Private clinical document extraction workbench measuring leakage.
+
+Next.js | AI/ML
+
+[Repository](https://github.com/Builder106/enclave) | [Demo](https://enclave-iota.vercel.app)
+
+</details>
+
+<details>
+<summary>helm</summary>
+
+Executive co-pilot for small business back-office operations.
+
+TypeScript | AI/ML
+
+[Repository](https://github.com/Builder106/helm) | [Demo](https://helm-bridge.vercel.app)
+
+</details>
+
+<details>
+<summary>MetaHelper</summary>
+
+Android audio inspection and metadata tagger for mobile devices.
+
+Kotlin | Mobile
+
+[Repository](https://github.com/Builder106/meta-helper)
+
+</details>
+
+<details>
+<summary>ASCII Arcade</summary>
+
+Terminal-based arcade game engine running in ANSI graphics.
+
+Rust | Tooling
+
+[Repository](https://github.com/Builder106/ascii-arcade)
 
 </details>
