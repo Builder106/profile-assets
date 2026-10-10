@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="148" viewBox="0 0 130 148" role="img" aria-label="qforge, C99, Quant">
+  <style>
+    .cell { animation: reveal 0.55s ease-out both; }
+    @keyframes reveal { from { opacity: 0; } to { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .cell { animation: none; opacity: 1; }
+    }
+  </style>
+  <g class="cell">
+    <rect x="0.5" y="0.5" width="129" height="147" rx="2" fill="none" stroke="#656d76" stroke-width="1"/>
+    <image x="105" y="10" width="14" height="14" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzNDM4M2MiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICA8cGF0aCBkPSJNMTIgMTZ2NSIgLz4KICA8cGF0aCBkPSJNMTYgMTQuNjM5VjIxIiAvPgogIDxwYXRoIGQ9Ik0yMCAxMC42NTZWMjEiIC8+CiAgPHBhdGggZD0ibTIyIDMtOC42NDYgOC42NDZhLjUuNSAwIDAgMS0uNzA4IDBMOS4zNTQgOC4zNTRhLjUuNSAwIDAgMC0uNzA3IDBMMiAxNSIgLz4KICA8cGF0aCBkPSJNNCAxOC40NjNWMjEiIC8+CiAgPHBhdGggZD0iTTggMTQuNjU2VjIxIiAvPgo8L3N2Zz4=" aria-hidden="true"/>
+    <svg class="repo-mark" x="35" y="29" width="60" height="60" viewBox="5 6 18 21" overflow="hidden" aria-hidden="true"><image width="32" height="32" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPCEtLQogICAgcWZvcmdlIGZhdmljb24g4oCUIGEgbG93ZXJjYXNlICJxIiByZW5kZXJlZCBhcyB0d28gc2hhcGVzOgogICAgICDigKIgYSBzdHJva2VkIGNpcmNsZSBmb3IgdGhlIGJvd2wsCiAgICAgIOKAoiBhIGZpbGxlZCByZWN0YW5nbGUgZm9yIHRoZSBzdGVtICsgZGVzY2VuZGVyLgogICAgTGlnaHQvZGFyayB2YXJpYW50cyBmb2xsb3cgdGhlIGJyb3dzZXIgY29sb3Itc2NoZW1lIHByZWZlcmVuY2UgYW5kIHRoZQogICAgYWNjZW50cyBtYXRjaCB0aGUgcGFnZSdzIENTUyB2YXJpYWJsZXMuCiAgLS0+CiAgPHN0eWxlPgogICAgLmJnIHsgZmlsbDogIzBiMGQxMDsgfQogICAgLmZnIHsgY29sb3I6ICM3Y2M0ZmY7IH0KICAgIEBtZWRpYSAocHJlZmVycy1jb2xvci1zY2hlbWU6IGxpZ2h0KSB7CiAgICAgIC5iZyB7IGZpbGw6ICNmZmZmZmY7IH0KICAgICAgLmZnIHsgY29sb3I6ICMwMDY2Y2M7IH0KICAgIH0KICA8L3N0eWxlPgogIDxyZWN0IGNsYXNzPSJiZyIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIvPgogIDxnIGNsYXNzPSJmZyI+CiAgICA8Y2lyY2xlIGN4PSIxMi41IiBjeT0iMTQiIHI9IjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxyZWN0IHg9IjE2IiB5PSIxMSIgd2lkdGg9IjMiIGhlaWdodD0iMTMiIGZpbGw9ImN1cnJlbnRDb2xvciIvPgogIDwvZz4KPC9zdmc+Cg==" data-role="project"/></svg>
+    <text x="65" y="107" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" fill="#1f2328" text-anchor="middle">qforge</text>
+    <text x="65" y="131" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#3e444a" text-anchor="middle">C99</text>
+  </g>
+</svg>
