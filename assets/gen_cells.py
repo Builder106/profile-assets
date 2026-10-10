@@ -123,6 +123,12 @@ def cell_svg(theme, num, symbol, lang, project, disc):
             mark = f'<svg class="repo-mark" x="{x:g}" y="{y:g}" width="{width}" height="{height}" viewBox="{viewport}" overflow="hidden" aria-hidden="true">{clip}<image width="{source_w}" height="{source_h}" href="{art}" data-role="project"{clipping}/></svg>'
         else:
             mark = f'<image class="repo-mark" x="{x:g}" y="{y:g}" width="{width}" height="{height}" href="{art}" data-role="project" aria-hidden="true"/>'
+        if project == "portfolio" and theme == "dark":
+            mark = (
+                '<defs><filter id="portfolio-dark" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 -0.2126 -0.7152 -0.0722 1 0"/></filter></defs><g filter="url(#portfolio-dark)">'
+                + mark
+                + "</g>"
+            )
     else:
         mark = f'<text x="65" y="72" font-family="{FONT}" font-size="32" fill="{n["fg"]}" text-anchor="middle">{escape(symbol)}</text>'
     tech = SOURCES["technologies"].get(lang)

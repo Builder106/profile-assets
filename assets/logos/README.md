@@ -17,3 +17,5 @@ On 2026-10-10, the logo layout replaced the symbol-only table. Transparent inter
 On 2026-10-10, a second refinement removed the numeric axes, increased project names to 14 px with medium weight, and gave technology labels more breathing room in 130 by 148 px tiles. Individual logo viewports and display sizes balance the visible marks without redrawing them.
 
 On 2026-10-10, the central introduction and visible project counts were removed at the user's request. The counts remain in the image description.
+
+On 2026-10-10, the portfolio tile was corrected to use the supplied `public/favicon.png` monogram from the portfolio repository. Its original PNG is embedded unchanged; a native SVG color filter renders the black monogram white in the dark theme while preserving its transparency.

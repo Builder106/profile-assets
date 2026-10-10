@@ -193,11 +193,11 @@
       "sha256": "1fd7afd5394a523d58cd77620b683e60b7626b246d3c45dbf171019fa3dee99d"
     },
     "portfolio": {
-      "file": "repositories/portfolio.svg",
-      "source_path": "public/favicon.svg",
+      "file": "repositories/portfolio.png",
+      "source_path": "public/favicon.png",
       "source_repository": "https://github.com/Builder106/builder106.github.io.git",
       "source_revision": "7fb8fce899b568b2eb0edbf7682ce64eaa58cc42",
-      "sha256": "fc24140c11801475dd743ef177c3e7c1a3eda7c9a72334beac98d1fe3b9d9bc9"
+      "sha256": "3cc453c21d3e9e6c3f0f3178209ef711c91f53cc78e7a75677284682ad3cd41a"
     },
     "celestial_sanctum": {
       "file": "repositories/celestial_sanctum-light.png",
