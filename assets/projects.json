@@ -172,18 +172,6 @@
       "periodic": { "period": 2, "slot": 6, "num": 13, "symbol": "Py" }
     },
     {
-      "id": "celestial_sanctum",
-      "repo": "celestial-sanctum",
-      "name": "celestial_sanctum",
-      "track": "M",
-      "lang": "TypeScript",
-      "stack": "Angular / Mobile",
-      "headline": "iOS audio sanctuary app with dynamic spatial soundscapes.",
-      "signal_label": "audio",
-      "signal": "spatial audio",
-      "periodic": { "period": 2, "slot": 7, "num": 14, "symbol": "Sw" }
-    },
-    {
       "id": "halberd",
       "repo": "halberd",
       "name": "halberd",

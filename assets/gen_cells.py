@@ -46,7 +46,6 @@ DISPLAY_NAMES.update(
     {
         "ocaml_limit": "OCaml Limit",
         "IMC_Prosperity": "IMC Prosperity",
-        "celestial_sanctum": "Celestial Sanctum",
         "ascii_arcade": "ASCII Arcade",
     }
 )
@@ -56,7 +55,6 @@ LOGO_FRAMES = {
     "CapitolAlpha": ("6 5 20 23", 32, 32, 60, 60),
     "STAIJA": (None, 0, 0, 66, 66),
     "MicroMatch": (None, 0, 0, 64, 64),
-    "celestial_sanctum": ("210 178 385 510", 803, 762, 50, 66),
 }
 ET.register_namespace("", SVG)
 
@@ -115,12 +113,7 @@ def cell_svg(theme, num, symbol, lang, project, disc):
         viewport, source_w, source_h, width, height = LOGO_FRAMES.get(project, (None, 0, 0, 60, 60))
         x, y = (130 - width) / 2, 89 - height
         if viewport:
-            clip = ""
-            clipping = ""
-            if project == "celestial_sanctum":
-                clip = '<defs><clipPath id="celestial-emblem"><path d="M268 178H537L595 278V688H210V278Z"/></clipPath></defs>'
-                clipping = ' clip-path="url(#celestial-emblem)"'
-            mark = f'<svg class="repo-mark" x="{x:g}" y="{y:g}" width="{width}" height="{height}" viewBox="{viewport}" overflow="hidden" aria-hidden="true">{clip}<image width="{source_w}" height="{source_h}" href="{art}" data-role="project"{clipping}/></svg>'
+            mark = f'<svg class="repo-mark" x="{x:g}" y="{y:g}" width="{width}" height="{height}" viewBox="{viewport}" overflow="hidden" aria-hidden="true"><image width="{source_w}" height="{source_h}" href="{art}" data-role="project"/></svg>'
         else:
             mark = f'<image class="repo-mark" x="{x:g}" y="{y:g}" width="{width}" height="{height}" href="{art}" data-role="project" aria-hidden="true"/>'
         if project == "portfolio" and theme == "dark":

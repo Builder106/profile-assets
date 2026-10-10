@@ -200,7 +200,7 @@ def test_unified_generation_and_write_unified(cells, tmp_path, monkeypatch):
         svg = cells.unified_svg(theme)
         ET.fromstring(svg)
         assert svg.startswith("<svg")
-        assert "20 projects | 14 technologies | 8 tracks" in svg
+        assert "19 projects | 14 technologies | 8 tracks" in svg
         assert ">Tracks</text>" in svg
         assert "BUILDER106" not in svg
         assert "SYMBOLS" not in svg

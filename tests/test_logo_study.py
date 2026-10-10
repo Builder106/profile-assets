@@ -32,7 +32,7 @@ def test_full_table_preserves_artwork_and_transparent_cards():
     for theme in ("light", "dark"):
         root = ET.fromstring(cells.unified_svg(theme))
         groups = [g for g in root.findall(f"{{{cells.SVG}}}g") if g.get("class") == "cell"]
-        assert len(groups) == len(cells.CELLS) == 20
+        assert len(groups) == len(cells.CELLS) == 19
         for group, cell in zip(groups, cells.CELLS, strict=True):
             card = group.find(f"{{{cells.SVG}}}rect")
             assert card.get("fill") == "none"
