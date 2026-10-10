@@ -2,12 +2,15 @@
   <style>
     @keyframes drawChart { 0%, 15% { stroke-dashoffset: 130; } 45%, 80% { stroke-dashoffset: 0; } 90%, 100% { stroke-dashoffset: -130; } }
     @keyframes popNode { 0%, 20% { opacity: 0; transform: scale(0); } 35%, 85% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0); } }
-    @keyframes bracketGlow { 0%, 100% { filter: drop-shadow(0 0 3px rgba(88, 166, 255, 0.4)); } 50% { filter: drop-shadow(0 0 10px rgba(88, 166, 255, 1)); } }
     
     .bg { fill: #0D1117; }
-    .bracket { fill: none; stroke: #58A6FF; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; animation: bracketGlow 4s ease-in-out infinite; }
+    .bracket { fill: none; stroke: #38BDF8; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
     .chart-line { fill: none; stroke: #3FB950; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 130; animation: drawChart 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
     .chart-node { fill: #FFFFFF; transform-origin: center; transform-box: fill-box; }
+    @media (prefers-reduced-motion: reduce) {
+      .chart-line { animation: none; stroke-dashoffset: 0; }
+      .chart-node { animation: none; opacity: 1; transform: none; }
+    }
   </style>
 
   <rect class="bg" width="256" height="256" />
