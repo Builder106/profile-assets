@@ -1,10 +1,10 @@
 # Project and technology artwork
 
-The full table uses original artwork for all twenty projects. Each transparent tile has a thin outline, a 52 px project mark, its name, and a 16 px technology mark beside the technology label. An 18 px Lucide icon in the upper-right corner identifies the track. The table legend pairs each icon with its name.
+The full table uses original artwork for all twenty projects. Each transparent tile has a thin outline, a project mark sized to its visible artwork, its name, and a 16 px technology mark beside the technology label. A 14 px Lucide icon in the upper-right corner identifies the track. The table legend pairs each icon with its name.
 
-Original SVG, PNG, and WebP files are copied unchanged from the project repositories or the portfolio’s existing project-logo collection. `sources.json` records their paths, repository URLs, revisions, and SHA-256 hashes. Technology marks come from [Simple Icons](https://github.com/simple-icons/simple-icons), and track icons come from [Lucide](https://github.com/lucide-icons/lucide). Their pinned revisions, source URLs, hashes, and upstream licenses are included here.
+Original SVG, PNG, and WebP files are copied unchanged from the project repositories or the portfolio's existing project-logo collection. `sources.json` records their paths, repository URLs, revisions, and SHA-256 hashes. Technology marks come from [Simple Icons](https://github.com/simple-icons/simple-icons), and track icons come from [Lucide](https://github.com/lucide-icons/lucide). Their pinned revisions, source URLs, hashes, and upstream licenses are included here.
 
-The generator embeds artwork as data URLs. Original project colors and proportions remain intact. Technology silhouettes use their upstream colors; black marks use the theme’s foreground color. C99 and Yul retain text labels because this source collection has no dedicated marks for them.
+The generator embeds artwork as data URLs. Original project colors and proportions remain intact. SVG viewports remove excess padding from qforge and CapitolAlpha and show the central Celestial Sanctum emblem. The original source files remain unchanged. Celestial Sanctum uses existing light and dark artwork; STAIJA uses its higher-resolution application icon. Technology silhouettes use their upstream colors; black marks use the theme’s foreground color. C99 and Yul retain text labels because this source collection has no dedicated marks for them.
 
 Tiles share one renderer between the full table and the four-project review strip. Neither version uses background fills, colored edge bars, corner numbers, blinking indicators, or repeating motion. The brief entrance fade becomes static when reduced motion is enabled.
 
@@ -12,4 +12,6 @@ Run `python assets/build.py` to regenerate the full table and standalone cells. 
 
 ## Design decisions
 
-On 2026-10-10, the logo layout replaced the symbol-only table. Transparent interiors replaced the rejected tinted and off-white surfaces. Celestial Sanctum’s technology label was corrected from Swift to TypeScript after checking its Angular source and project journal.
+On 2026-10-10, the logo layout replaced the symbol-only table. Transparent interiors replaced the rejected tinted and off-white surfaces. Celestial Sanctum's technology label was corrected from Swift to TypeScript after checking its Angular source and project journal.
+
+On 2026-10-10, a second refinement removed the numeric axes, increased project names to 14 px with medium weight, and gave technology labels more breathing room in 130 by 148 px tiles. The empty center now contains a short introduction and the project counts. Individual logo viewports and display sizes balance the visible marks without redrawing them.

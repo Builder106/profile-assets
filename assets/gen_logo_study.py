@@ -19,8 +19,8 @@ def study_svg(theme: str) -> str:
         f"{{{SVG}}}svg",
         {
             "width": "600",
-            "height": "170",
-            "viewBox": "0 0 600 170",
+            "height": "188",
+            "viewBox": "0 0 600 188",
             "role": "img",
             "aria-label": "OCaml Limit: Quant, OCaml; ClearHash: Cybersec, Rust; CapitolAlpha: Analyst, Python; MedCore: HealthTech, React",
         },

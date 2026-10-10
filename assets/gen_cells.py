@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate per-cell SVGs for the periodic table.
 
-Each cell is a self-contained 130x130 SVG with a transparent background,
+Each cell is a self-contained 130x148 SVG with a transparent background,
 so they tile into a continuous-looking grid when laid out in an HTML
 <table>. Each cell is wrapped in <a> in the README for click-through.
 
@@ -50,6 +50,14 @@ DISPLAY_NAMES.update(
         "ascii_arcade": "ASCII Arcade",
     }
 )
+# Adjust the visible artwork, rather than treating favicon padding as part of the mark.
+LOGO_FRAMES = {
+    "qforge": ("5 6 18 21", 32, 32, 60, 60),
+    "CapitolAlpha": ("6 5 20 23", 32, 32, 60, 60),
+    "STAIJA": (None, 0, 0, 66, 66),
+    "MicroMatch": (None, 0, 0, 64, 64),
+    "celestial_sanctum": ("210 178 385 510", 803, 762, 50, 66),
+}
 ET.register_namespace("", SVG)
 
 
@@ -63,9 +71,9 @@ def embedded_logo(path: Path, colour: str | None = None, attribute: str = "fill"
     return f"data:{mime};base64," + base64.b64encode(source).decode("ascii")
 
 
-def category_image(theme, disc, x=104, y=10):
+def category_image(theme, disc, x=105, y=10, size=14):
     source = embedded_logo(LOGOS / SOURCES["categories"][disc]["file"], NEUTRAL[theme]["muted"], "stroke")
-    return f'<image x="{x}" y="{y}" width="18" height="18" href="{source}" aria-hidden="true"/>'
+    return f'<image x="{x}" y="{y}" width="{size}" height="{size}" href="{source}" aria-hidden="true"/>'
 
 
 def disc_label(code):
@@ -101,10 +109,20 @@ def cell_svg(theme, num, symbol, lang, project, disc):
     n = NEUTRAL[theme]
     name = escape(DISPLAY_NAMES.get(project, project))
     label = disc_label(disc)
-    repo = SOURCES["repositories"].get(project)
+    repo = SOURCES.get("repository_variants", {}).get(f"{project}_{theme}", SOURCES["repositories"].get(project))
     if repo:
         art = embedded_logo(LOGOS / repo["file"])
-        mark = f'<image x="39" y="31" width="52" height="52" href="{art}" aria-hidden="true"/>'
+        viewport, source_w, source_h, width, height = LOGO_FRAMES.get(project, (None, 0, 0, 60, 60))
+        x, y = (130 - width) / 2, 89 - height
+        if viewport:
+            clip = ""
+            clipping = ""
+            if project == "celestial_sanctum":
+                clip = '<defs><clipPath id="celestial-emblem"><path d="M268 178H537L595 278V688H210V278Z"/></clipPath></defs>'
+                clipping = ' clip-path="url(#celestial-emblem)"'
+            mark = f'<svg class="repo-mark" x="{x:g}" y="{y:g}" width="{width}" height="{height}" viewBox="{viewport}" overflow="hidden" aria-hidden="true">{clip}<image width="{source_w}" height="{source_h}" href="{art}" data-role="project"{clipping}/></svg>'
+        else:
+            mark = f'<image class="repo-mark" x="{x:g}" y="{y:g}" width="{width}" height="{height}" href="{art}" data-role="project" aria-hidden="true"/>'
     else:
         mark = f'<text x="65" y="72" font-family="{FONT}" font-size="32" fill="{n["fg"]}" text-anchor="middle">{escape(symbol)}</text>'
     tech = SOURCES["technologies"].get(lang)
@@ -112,16 +130,16 @@ def cell_svg(theme, num, symbol, lang, project, disc):
         colour = n["fg"] if tech["hex"] == "000000" else "#" + tech["hex"]
         art = embedded_logo(LOGOS / tech["file"], colour)
         start = (130 - (22 + len(lang) * 5.5)) / 2
-        technology = f'<image x="{start:.1f}" y="109" width="16" height="16" href="{art}" aria-hidden="true"/><text x="{start + 22:.1f}" y="121" font-family="{FONT}" font-size="11" fill="{n["muted"]}">{escape(lang)}</text>'
+        technology = f'<image x="{start:.1f}" y="119" width="16" height="16" href="{art}" aria-hidden="true"/><text x="{start + 22:.1f}" y="131" font-family="{FONT}" font-size="10.5" fill="{n["faded"]}">{escape(lang)}</text>'
     else:
-        technology = f'<text x="65" y="121" font-family="{FONT}" font-size="11" fill="{n["muted"]}" text-anchor="middle">{escape(lang)}</text>'
-    return f'''<svg xmlns="{SVG}" width="130" height="130" viewBox="0 0 130 130" role="img" aria-label="{name}, {escape(lang)}, {label}">
+        technology = f'<text x="65" y="131" font-family="{FONT}" font-size="10.5" fill="{n["faded"]}" text-anchor="middle">{escape(lang)}</text>'
+    return f'''<svg xmlns="{SVG}" width="130" height="148" viewBox="0 0 130 148" role="img" aria-label="{name}, {escape(lang)}, {label}">
 {MOTION_CSS}
   <g class="cell">
-    <rect x="0.5" y="0.5" width="129" height="129" rx="2" fill="none" stroke="{n["border"]}" stroke-width="1"/>
+    <rect x="0.5" y="0.5" width="129" height="147" rx="2" fill="none" stroke="{n["border"]}" stroke-width="1"/>
     {category_image(theme, disc)}
     {mark}
-    <text x="65" y="100" font-family="{FONT}" font-size="12" font-weight="500" fill="{n["fg"]}" text-anchor="middle">{name}</text>
+    <text x="65" y="107" font-family="{FONT}" font-size="14" font-weight="600" fill="{n["fg"]}" text-anchor="middle">{name}</text>
     {technology}
   </g>
 </svg>
@@ -140,16 +158,8 @@ def write_svgs(out_dir):
 def print_table():
     by_pos = {(p, s): (num, symbol, project) for p, s, num, symbol, _, project, _ in CELLS}
     print('<table cellspacing="2" cellpadding="0" border="0">')
-    # Column header: group numbers
-    print("  <tr>")
-    print('    <td width="28"></td>')
-    for g in range(1, 9):
-        print(f'    <td width="132" align="center"><sub><code>{g}</code></sub></td>')
-    print("  </tr>")
     for period in range(4):
         print("  <tr>")
-        # Row header: period number
-        print(f'    <td width="28" align="right" valign="middle"><sub><code>{period + 1}</code></sub></td>')
         for slot in range(8):
             if (period, slot) in by_pos:
                 num, symbol, project = by_pos[(period, slot)]
@@ -157,7 +167,7 @@ def print_table():
                 stem = f"{num:02d}-{symbol.lower()}"
                 url = f"https://github.com/Builder106/{repo}"
                 print(
-                    f'    <td width="132" align="center"><a href="{url}" title="{project}"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cells/{stem}-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/cells/{stem}-light.svg"><img alt="{num:02d} {symbol} {project}" src="assets/cells/{stem}-dark.svg" width="130" height="130"></picture></a></td>'
+                    f'    <td width="132" align="center"><a href="{url}" title="{project}"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cells/{stem}-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/cells/{stem}-light.svg"><img alt="{num:02d} {symbol} {project}" src="assets/cells/{stem}-dark.svg" width="130" height="148"></picture></a></td>'
                 )
             else:
                 print('    <td width="132"></td>')
@@ -174,10 +184,9 @@ def unified_svg(theme):
     faded = n["faded"]
     chrome_rule = n["rule"]
 
-    W, H = 1200, 768
-    MARGIN_L, MARGIN_TOP = 52, 82
-    CELL_W, CELL_H = 130, 130
-    COL_STRIDE, ROW_STRIDE = 139, 145
+    W, H = 1152, 768
+    MARGIN_L, MARGIN_TOP = 24, 24
+    COL_STRIDE, ROW_STRIDE = 139, 160
 
     by_pos = {(p, s): (num, symbol, lang, project, disc) for p, s, num, symbol, lang, project, disc in CELLS}
 
@@ -185,23 +194,10 @@ def unified_svg(theme):
     out = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="The Elements: {summary}">',
         MOTION_CSS,
-        f'  <text x="52" y="28" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="{faded}">{summary}</text>',
-        f'  <line x1="52" y1="54" x2="{W - 47}" y2="54" stroke="{chrome_rule}" stroke-width="1"/>',
+        f'  <text x="320" y="120" font-family="{FONT}" font-size="34" font-weight="600" fill="{n["fg"]}">Software, data,</text>',
+        f'  <text x="320" y="161" font-family="{FONT}" font-size="34" font-weight="600" fill="{n["fg"]}">and systems.</text>',
+        f'  <text x="320" y="196" font-family="{FONT}" font-size="14" fill="{faded}">{summary}</text>',
     ]
-
-    # Group labels (1..8 across the top of cell columns)
-    for g in range(8):
-        cx = MARGIN_L + g * COL_STRIDE + CELL_W // 2
-        out.append(
-            f'    <text x="{cx}" y="74" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="500" fill="{muted}" text-anchor="middle">{g + 1}</text>'
-        )
-
-    # Period labels (1..4 down the left side)
-    for p in range(4):
-        cy = MARGIN_TOP + p * ROW_STRIDE + CELL_H // 2 + 5
-        out.append(
-            f'    <text x="36" y="{cy}" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="500" fill="{muted}" text-anchor="end">{p + 1}</text>'
-        )
 
     # Reuse the same artwork and layout for standalone and combined tiles.
     for (p, s), (num, symbol, lang, project, disc) in sorted(by_pos.items()):
@@ -214,21 +210,21 @@ def unified_svg(theme):
     # Legend area
     legend_y = MARGIN_TOP + 4 * ROW_STRIDE + 12
     out.append(
-        f'  <line x1="52" y1="{legend_y}" x2="{W - 47}" y2="{legend_y}" stroke="{chrome_rule}" stroke-width="1"/>'
+        f'  <line x1="24" y1="{legend_y}" x2="{W - 24}" y2="{legend_y}" stroke="{chrome_rule}" stroke-width="1"/>'
     )
     out.append(
-        f'  <text x="52" y="{legend_y + 28}" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="{muted}">Tracks</text>'
+        f'  <text x="24" y="{legend_y + 28}" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="{muted}">Tracks</text>'
     )
 
-    chip_x, chip_y = 52, legend_y + 42
+    chip_x, chip_y = 24, legend_y + 42
     order = [code for code in TRACK if code in {c[6] for c in CELLS}]
     for code in order:
         name = disc_label(code)
         out.append(f'  <g transform="translate({chip_x}, {chip_y})">')
-        out.append(category_image(theme, code, 0, 4))
+        out.append(category_image(theme, code, 0, 4, 18))
         out.append(f'    <text x="25" y="17" font-family="{FONT}" font-size="12" fill="{muted}">{name}</text>')
         out.append("  </g>")
-        chip_x += 132
+        chip_x += 139
 
     out.append("</svg>")
     return "\n".join(out)

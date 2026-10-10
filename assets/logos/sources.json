@@ -200,18 +200,18 @@
       "sha256": "fc24140c11801475dd743ef177c3e7c1a3eda7c9a72334beac98d1fe3b9d9bc9"
     },
     "celestial_sanctum": {
-      "file": "repositories/celestial_sanctum.png",
-      "source_path": "icons/icon-128.webp",
+      "file": "repositories/celestial_sanctum-light.png",
+      "source_path": "assets/ccc-icon-light.png",
       "source_repository": "https://github.com/Builder106/celestial-sanctum.git",
       "source_revision": "8818f3d73c49e150e4ce6d020503d00ec932bc3e",
-      "sha256": "224c8960201f1179aef8931f7a470b5f24d3a9de27f9856a411ffc174fb156d7"
+      "sha256": "a0f034aea81cec8e1c886c36d7cd69fa54092a51b72dc215a58de6e7f8c0c9fb"
     },
     "STAIJA": {
-      "file": "repositories/STAIJA.webp",
-      "source_path": "public/img/projects/logos/staija.webp",
-      "source_repository": "https://github.com/Builder106/builder106.github.io.git",
-      "source_revision": "7fb8fce899b568b2eb0edbf7682ce64eaa58cc42",
-      "sha256": "c8ce041dcb9310b9d8d115bc0b1e68d7e59ceb3276570ce4daa4440ee104e5b9"
+      "file": "repositories/STAIJA.png",
+      "source_path": "public/apple-touch-icon.png",
+      "source_repository": "https://github.com/Builder106/staija.git",
+      "source_revision": "9019800a905fafcbab77bd304993ee4d6b1ed367",
+      "sha256": "dd099bb03c5a04bd2d8820393e0f89cd1326f329e2aa6520208cc3b6d80c6c83"
     },
     "MicroMatch": {
       "file": "repositories/MicroMatch.webp",
@@ -275,6 +275,15 @@
       "file": "categories/wrench.svg",
       "source": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/wrench.svg",
       "sha256": "b5f3bf792743edb9e81b543dd1b13ccc26d3afe1d33500a1cd8dee2e052d6197"
+    }
+  },
+  "repository_variants": {
+    "celestial_sanctum_dark": {
+      "file": "repositories/celestial_sanctum-dark.png",
+      "source_path": "assets/ccc-icon-dark.png",
+      "source_repository": "https://github.com/Builder106/celestial-sanctum.git",
+      "source_revision": "8818f3d73c49e150e4ce6d020503d00ec932bc3e",
+      "sha256": "086b134c2c6b8ac66abdf7c0f91c0cb4f7172067cbe156c0ce05c9cf17a110f7"
     }
   }
 }
