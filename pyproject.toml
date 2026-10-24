@@ -33,6 +33,7 @@ select = [
     "UP",
     "B",
     "RUF",
+    "ANN401",
 ]
 ignore = [
     "E501",
@@ -46,6 +47,7 @@ indent-style = "space"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "--cov --cov-report=term-missing"
+filterwarnings = ["error::DeprecationWarning"]
 
 [tool.coverage.run]
 source = ["assets"]
