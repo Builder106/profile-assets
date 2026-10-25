@@ -1,5 +1,9 @@
 # Journal
 
+## 2026-10-25: Sync recolored ClearHash repository logo #decision
+
+Synchronized ClearHash's updated terminal phosphor logo into `assets/logos/repositories/ClearHash.svg`, refreshed its checksum in `sources.json`, and rebuilt all derived cell, card, table, and study SVGs.
+
 ## 2026-10-11: Stack schematic
 
 The Stack section uses unboxed connector branches to distinguish it from the project gallery. SVGator is the authoring source; `assets/stack/source.json` preserves all four documents. Wide and mobile layouts each have light and dark exports. All 24 existing tools remain, with Web split into frontend and backend/full-stack branches.
