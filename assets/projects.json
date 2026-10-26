@@ -37,7 +37,7 @@
       "headline": "Byte-level security scanner checking source against binaries.",
       "signal_label": "verification",
       "signal": "SLSA verified",
-      "demo": "https://clear-hash.vercel.app",
+      "demo": "https://clearhash.vercel.app",
       "periodic": { "period": 1, "slot": 0, "num": 3, "symbol": "Rs" }
     },
     {
