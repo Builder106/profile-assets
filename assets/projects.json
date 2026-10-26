@@ -62,7 +62,7 @@
       "stack": "R / Analyst",
       "headline": "Transportation and emergency care across 58k hospital patients.",
       "signal_label": "observed pattern",
-      "signal": "3x more ER visits",
+      "signal": "3x ED-visit odds",
       "demo": "https://datafest-2026.vercel.app/",
       "periodic": { "period": 1, "slot": 6, "num": 5, "symbol": "R" }
     },
@@ -144,7 +144,6 @@
       "demo": "https://medcore-health.vercel.app",
       "periodic": { "period": 2, "slot": 4, "num": 11, "symbol": "Re" }
     },
-
     {
       "id": "portfolio",
       "repo": "builder106.github.io",
@@ -161,11 +160,11 @@
     {
       "id": "IMC_Prosperity",
       "repo": "imc-prosperity",
-      "name": "IMC_Prosperity",
+      "name": "TradeTell",
       "track": "L",
       "lang": "Python",
       "stack": "Python / AI/ML",
-      "headline": "Trading competition assistant using RAG over wiki and market data.",
+      "headline": "Market workbench that replays traders and answers with cited sources.",
       "signal_label": "retrieval",
       "signal": "ensemble RAG",
       "demo": "https://tradetell.streamlit.app",
@@ -179,8 +178,8 @@
       "lang": "Go",
       "stack": "Go / Cybersec",
       "headline": "JSON-RPC firewall evaluating MCP tool calls against strict policy.",
-      "signal_label": "latency p50",
-      "signal": "p50 ≤ 200 µs",
+      "signal_label": "DROP TABLE refusal",
+      "signal": "2.6 µs",
       "demo": "https://halberd-keep.vercel.app",
       "periodic": { "period": 3, "slot": 0, "num": 15, "symbol": "Go" }
     },
@@ -191,38 +190,37 @@
       "track": "Y",
       "lang": "Yul",
       "stack": "Solidity / Cybersec",
-      "headline": "Bare-metal MEV arbitrage back-running engine with Yul executor.",
+      "headline": "MEV arbitrage back-running engine with a 188-byte Yul executor.",
       "signal_label": "contract size",
       "signal": "188-byte Yul",
       "demo": "https://quarry-mev.vercel.app",
       "periodic": { "period": 3, "slot": 1, "num": 16, "symbol": "Yu" }
     },
     {
-      "id": "enclave",
-      "repo": "enclave",
-      "name": "enclave",
+      "id": "tcg_cabt_lab",
+      "repo": "tcg-cabt-lab",
+      "name": "TCG CABT Lab",
+      "lang": "Python",
+      "stack": "Python / AI/ML",
       "track": "L",
-      "lang": "Next.js",
-      "stack": "Next.js / AI/ML",
-      "headline": "Private clinical document extraction workbench measuring leakage.",
-      "signal_label": "privacy gate",
-      "signal": "0 B egress",
-      "demo": "https://enclave-iota.vercel.app",
-      "periodic": { "period": 3, "slot": 2, "num": 17, "symbol": "Nx" }
+      "headline": "Compact Pokemon TCG agents tested on 360 held-out games.",
+      "signal": "2,881 params",
+      "signal_label": "policy size",
+      "demo": "https://tcg-cabt-lab.vercel.app",
+      "periodic": { "period": 3, "slot": 2, "num": 17, "symbol": "Py" }
     },
-
     {
-      "id": "helm",
-      "repo": "helm",
-      "name": "helm",
+      "id": "vgc_rulebreak",
+      "repo": "vgc-rulebreak",
+      "name": "VGC Rulebreak",
+      "lang": "Python",
+      "stack": "Python / AI/ML",
       "track": "L",
-      "lang": "TypeScript",
-      "stack": "React 19 / AI/ML",
-      "headline": "Executive co-pilot for small business back-office operations.",
-      "signal_label": "OCR accuracy",
-      "signal": "99% parse",
-      "demo": "https://helm-bridge.vercel.app",
-      "periodic": { "period": 3, "slot": 3, "num": 18, "symbol": "Ts" }
+      "headline": "How Showdown agents cope when Protect drops from 16 to 8 PP.",
+      "signal": "1,188 games",
+      "signal_label": "held-out games",
+      "demo": "https://vgc-rulebreak.vercel.app",
+      "periodic": { "period": 3, "slot": 3, "num": 18, "symbol": "Py" }
     },
     {
       "id": "MetaHelper",

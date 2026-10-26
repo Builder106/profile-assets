@@ -131,17 +131,17 @@
     },
     "EconOS": {
       "file": "repositories/EconOS.svg",
-      "source_path": "dashboard/favicon.svg",
+      "source_path": "desktop/public/favicon.svg",
       "source_repository": "https://github.com/Builder106/econ-os.git",
-      "source_revision": "9e5a271574fee590048d69c2ffecfc880c74672e",
-      "sha256": "62ec1039af06e9eaaf1a92f29d27b28ed6a53b07d75dd41c3fcead1c17a9d831"
+      "source_revision": "b80db4252bbee2ad7433ff9c2178fdaf2c2804e5",
+      "sha256": "b9f4ae0982e7859b1db1676f19ccc2512767ebed6de1ee1aa1928c83a0f56f3f"
     },
     "datafest-2026": {
       "file": "repositories/datafest-2026.svg",
       "source_path": "docs/favicon.svg",
       "source_repository": "https://github.com/Builder106/datafest-2026.git",
-      "source_revision": "5b50cf232c90535e54cf5e2105cf3f385398c4e0",
-      "sha256": "fb2c6cb0ebf4016286ee36df38d7495c5bd114fadb3c28fc9429d23f038cc1e6"
+      "source_revision": "913d00ce4a74b58d204bdf25dc018c415fe275e4",
+      "sha256": "f6e60e3067336dab3e8f96ae7eda1b234874871cf420f5badc3bbebc51de30e6"
     },
     "LinuxBenchHub": {
       "file": "repositories/LinuxBenchHub.svg",
@@ -161,8 +161,8 @@
       "file": "repositories/halberd.svg",
       "source_path": "assets/favicon.svg",
       "source_repository": "https://github.com/Builder106/halberd.git",
-      "source_revision": "d99c510fd2e22aefc66d42b7da7e54b181c2c61d",
-      "sha256": "fcab2721d3fd4c4df1270bc691a23b4fb64d05300278c3bf7a848004a246cc11"
+      "source_revision": "f956b455d5006b452aea2bbe04a17657c9dad813",
+      "sha256": "f02274e3c6b47310f4c796a6436444abea980c96202a3cc7c482fd91f451bb7b"
     },
     "quarry": {
       "file": "repositories/quarry.svg",
@@ -175,8 +175,8 @@
       "file": "repositories/IMC_Prosperity.svg",
       "source_path": "assets/logo.svg",
       "source_repository": "https://github.com/Builder106/imc-prosperity.git",
-      "source_revision": "b87a6176d3ece4242a1af6845db00f1c381e3fca",
-      "sha256": "ae805ddaeea03317d999f28f556230aed43698fcf099270a2351b9c429a71816"
+      "source_revision": "53fd1ffcf347b5f57777417294a6793c00c41553",
+      "sha256": "4c37ed0c1d1a8f83d4742e0eb91f8234901c87b6ebe76397466d9ab96f942df8"
     },
     "MetaHelper": {
       "file": "repositories/MetaHelper.svg",
@@ -217,22 +217,22 @@
       "file": "repositories/MicroMatch.webp",
       "source_path": "public/img/projects/logos/micromatch.webp",
       "source_repository": "https://github.com/Builder106/builder106.github.io.git",
-      "source_revision": "7fb8fce899b568b2eb0edbf7682ce64eaa58cc42",
-      "sha256": "9cb9fe029ca7507bcbe802cf906ae219290080e11c0e51c629941c1f7a2ea87f"
+      "source_revision": "d61fbd08b8daddcbc29fd80e3f11b90e8e2270b5",
+      "sha256": "4a7de919741bf364459965d796fe3d5a47436dcebf7fd780e8504678501763da"
     },
-    "enclave": {
-      "file": "repositories/enclave.webp",
-      "source_path": "public/img/projects/logos/enclave.webp",
-      "source_repository": "https://github.com/Builder106/builder106.github.io.git",
-      "source_revision": "7fb8fce899b568b2eb0edbf7682ce64eaa58cc42",
-      "sha256": "d89bdf3a307b740beefedee97ea848ea79132adffb14833c9dec17cb3df10167"
+    "tcg_cabt_lab": {
+      "file": "repositories/tcg_cabt_lab.svg",
+      "source_path": "web/public/favicon.svg",
+      "source_repository": "https://github.com/Builder106/tcg-cabt-lab.git",
+      "source_revision": "ff8127dd9df279a770b812bf206d2b8040a6263c",
+      "sha256": "8a0a062a6658ae9ede50e5247a2fe85e83968fa82e1979f2b12d7936df56e3c1"
     },
-    "helm": {
-      "file": "repositories/helm.webp",
-      "source_path": "public/img/projects/logos/helm.webp",
-      "source_repository": "https://github.com/Builder106/builder106.github.io.git",
-      "source_revision": "7fb8fce899b568b2eb0edbf7682ce64eaa58cc42",
-      "sha256": "cefed641cfb9f1a0b56e7dfa00f3675c232c622be44aaf6884cbb8b2f1f8ae2d"
+    "vgc_rulebreak": {
+      "file": "repositories/vgc_rulebreak.svg",
+      "source_path": "web/public/favicon.svg",
+      "source_repository": "https://github.com/Builder106/vgc-rulebreak.git",
+      "source_revision": "292a9ff56f5d4f53c55e757418497b6bbd766409",
+      "sha256": "98c840b383e2f6260d807301d4a0a60ab7b479786f264a24a146419ff81c776a"
     }
   },
   "categories": {

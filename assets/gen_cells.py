@@ -45,7 +45,6 @@ DISPLAY_NAMES = {p["id"]: p["name"].replace("_", " ") for p in PROJECTS_DATA["pr
 DISPLAY_NAMES.update(
     {
         "ocaml_limit": "OCaml Limit",
-        "IMC_Prosperity": "IMC Prosperity",
         "ascii_arcade": "ASCII Arcade",
     }
 )
