@@ -30,6 +30,10 @@ jobs:
           python-version: "3.13"
       - name: Install test and lint tools
         run: uv pip install --system pytest pytest-cov ruff
+      - name: Build derived assets
+        run: python assets/build.py
+      - name: Check generated SVGs
+        run: git diff --exit-code -- 'assets/*.svg' 'assets/cells/*.svg'
       - name: Run asset tests with coverage
         run: pytest
       - name: Check Ruff lint

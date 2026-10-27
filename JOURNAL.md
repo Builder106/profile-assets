@@ -1,5 +1,9 @@
 # Journal
 
+## 2026-10-27: Check generated SVGs in CI #ci #decision
+
+CI runs `python assets/build.py` and compares generated SVGs with tracked files. A mismatch now fails the asset job.
+
 ## 2026-10-26: Match the project grid to the portfolio #decision
 
 The grid still showed enclave and helm, whose portfolio racks went to TCG CABT Lab and VGC Rulebreak on 2026-10-25, so those two cards take slots 17 and 18. IMC Prosperity now shows as TradeTell, the name the portfolio uses; its id stays `IMC_Prosperity` so the logo key and card number don't move. EconOS, Halberd, DataFest and TradeTell take their new marks from each project's own SVG, and MicroMatch from the portfolio's webp, each pinned to the source commit in `sources.json`. Halberd's signal was "p50 ≤ 200 µs", a declared ceiling; it now shows the measured 2.6 µs. With Next.js gone the grid lists 13 technologies, so the table test expects 13.
